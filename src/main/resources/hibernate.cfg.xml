@@ -23,6 +23,9 @@
         <mapping class="entities.enabled.Source"/>
         <mapping class="entities.enabled.SamplingPeriod"/>
         <mapping class="entities.Study"/>
+        <mapping class="com.springapp.mvc.security.user.User"/>
+        <mapping class="com.springapp.mvc.security.user.UserRole"/>
+
 
     </session-factory>
 </hibernate-configuration>
