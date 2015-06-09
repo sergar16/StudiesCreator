@@ -1,8 +1,6 @@
 package db.dao;
 
-import db.Connector;
-import entities.Study;
-import entities.enabled.Key;
+import entities.available.dcm.Key;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -22,7 +20,7 @@ public class KeyDAO extends EntityDAO<Key> {
        return (List<Key>) super.getSession().createQuery("SELECT c FROM Key c").list();
     }
     @Override
-    public Key findById(final String id) {
+    public Key findById(final Long id) {
         Key find = null;
         for (Key key : findAll()) {
             if (key.getId().equals(id)) {
@@ -46,8 +44,7 @@ public class KeyDAO extends EntityDAO<Key> {
     public void update(final Key key) {
         Session session = super.getSession();
         session.beginTransaction();
-        Key deletedKey = findById(key.getId());
-        delete(deletedKey);
+        delete(key.getId());
         session.getTransaction().commit();
         session.beginTransaction();
         save(key);
@@ -55,11 +52,15 @@ public class KeyDAO extends EntityDAO<Key> {
     }
 
     @Override
-    public void delete(Key key) {
+    public void delete(Long id) {
+       try{
+        Key key=findById(id);
+
         Session session = super.getSession();
         session.beginTransaction();
         session.delete(key);
         session.getTransaction().commit();
+       }catch (Exception e){e.printStackTrace();}
 
 
     }

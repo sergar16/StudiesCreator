@@ -5,9 +5,11 @@ import db.dao.EntityDAO;
 import entities.Condition;
 import entities.DCM;
 import entities.Study;
-import entities.enabled.Key;
-import entities.enabled.SamplingPeriod;
-import entities.enabled.Source;
+import entities.available.condition.Name;
+import entities.available.condition.Value;
+import entities.available.dcm.Key;
+import entities.available.dcm.SamplingPeriod;
+import entities.available.dcm.Source;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,7 +22,7 @@ public class Mock {
     public static Study studyMock = new Study();
 
     static {
-        studyMock.setId("1");
+        studyMock.setId(1l);
         Set<Condition> conditions = new HashSet<>();
         conditions.add(new Condition("os_type", "windows"));
         conditions.add(new Condition("device_type", "mouce"));
@@ -46,19 +48,28 @@ public class Mock {
         keys.add(new Key("os_version"));
     }
 
-    public static ArrayList<String> names = new ArrayList<>();
+    public static ArrayList<Name> names = new ArrayList<>();
     static {
-        names.add("client_name");
-        names.add("os_type");
-        names.add("os_version");
+        names.add(new Name("client_name"));
+        names.add(new Name("os_type"));
+        names.add(new Name("os_version"));
+        names.add(new Name("device_id"));
+        names.add(new Name("device_name"));
+        names.add(new Name("region_name"));
     }
 
 
-    public static ArrayList<String> values=new ArrayList<>();
+    public static ArrayList<Value> values=new ArrayList<>();
     static {
-        values.add("windows");
-        values.add("mouse");
-        values.add("mac");
+        values.add(new Value("windows"));
+        values.add(new Value("Linux"));
+        values.add(new Value("mac"));
+        values.add(new Value("mouse"));
+        values.add(new Value("keyboard"));
+        values.add(new Value("webcam"));
+        values.add(new Value("gameing keyboard"));
+        values.add(new Value("wireless dev"));
+        values.add(new Value("eu-west-1"));
     }
 
     public static void init() {
@@ -89,7 +100,10 @@ public class Mock {
         entityDAO.save(new SamplingPeriod("0:0:0:0:0:100"));
         entityDAO.save(new SamplingPeriod("0:0:0:0:0:200"));
 
-
+        entityDAO=DAOFactory.getNamesDAO();
+        names.stream().forEach(entityDAO::save);
+        entityDAO=DAOFactory.getValuesDAO();
+        values.stream().forEach(entityDAO::save);
 
 
 

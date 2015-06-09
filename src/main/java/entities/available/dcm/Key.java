@@ -1,4 +1,4 @@
-package entities.enabled;
+package entities.available.dcm;
 
 import entities.JPAEntity;
 
@@ -8,13 +8,14 @@ import javax.persistence.*;
  * Created by Logitech on 02.06.15.
  */
 @Entity
-@Table(name = "ENABLED_KEYS")
+@Table(name = "AVAILABLE_KEYS")
 public class Key implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    String id;
-    @Column
+    @Column(name = "ID")
+    Long id;
+
+    @Column(name = "VALUE")
     String keyValue;
 
     public Key() {
@@ -24,11 +25,11 @@ public class Key implements JPAEntity {
         this.keyValue = key;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

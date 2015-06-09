@@ -7,20 +7,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+
 public class SecurityController {
 
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is welcome page!");
+		model.addObject("title", "public");
+		model.addObject("message", " public page with some information and sign in button!");
 		model.setViewName("public");
 		return model;
 
 	}
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
@@ -30,7 +31,7 @@ public class SecurityController {
 
 		return new ModelAndView("redirect:/myURL");
 
-	}
+	}*/
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
@@ -45,7 +46,6 @@ public class SecurityController {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
 		model.setViewName("login");
-
 		return model;
 
 	}

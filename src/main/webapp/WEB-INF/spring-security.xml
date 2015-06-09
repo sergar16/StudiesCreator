@@ -9,7 +9,17 @@
 
 
     <http auto-config="true">
-        <intercept-url pattern="/admin**" access="ROLE_USER" />
+        <intercept-url pattern="/admin/edit/dcm**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/admin/edit/conditions**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/admin/study/edit**" access="ROLE_ADMIN" />
+
+        <intercept-url pattern="/keyOperations/showAll**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/keyOperations/delete**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/keyOperations/add**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+
+
+        <intercept-url pattern="/login**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
         <form-login
                 login-page="/login"
                 default-target-url="/welcome"
@@ -18,16 +28,23 @@
                 password-parameter="password" />
         <logout logout-success-url="/login?logout" />
         <!-- enable csrf protection -->
-        <csrf/>
+       <!-- <csrf/>-->
     </http>
 
 
     <authentication-manager>
         <authentication-provider>
+
             <user-service>
-                <user name="serge" password="111" authorities="ROLE_USER" />
+                <user name="ksolodkyy" password="Logitech1234" authorities="ROLE_ADMIN" />
+
             </user-service>
+           <!--
+            <password-encoder hash="md5">
+                <salt-source system-wide="cewuiqwzie"/>
+            </password-encoder>-->
         </authentication-provider>
+
     </authentication-manager>
 
 </beans:beans>

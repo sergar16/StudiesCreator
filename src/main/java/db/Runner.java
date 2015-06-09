@@ -3,7 +3,7 @@ package db;
 import com.springapp.mvc.Mock;
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
-import entities.enabled.Key;
+import entities.available.dcm.Key;
 
 /**
  * Created by Logitech on 03.06.15.

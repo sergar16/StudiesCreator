@@ -12,17 +12,17 @@ import java.util.Set;
 public class Study implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     @ElementCollection
     Set<Condition> conditions=new HashSet<>();
     @ElementCollection
     Set<DCM> dcm=new HashSet<>();
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

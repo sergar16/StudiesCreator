@@ -23,13 +23,13 @@ public abstract class EntityDAO<T extends JPAEntity> {
 
     public abstract List<T> findAll();
 
-    public abstract T findById(final String id);
+    public abstract T findById(final Long id);
 
     public abstract void save(final T jpaEntity);
 
     public abstract void update(final T jpaEntity);
 
-    public abstract void delete(T jpaEntity);
+    public abstract void delete(final Long id);
 
     public Session getSession() {
         return session;

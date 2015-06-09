@@ -17,13 +17,13 @@
             <td align="left">
                 <select name="name">
                     <c:forEach var="item" items="${names}">
-                        <option value="${item}" ${item == cell.name ? 'selected="selected"' : ''}>${item}</option>
+                        <option value="${item.name}" ${item.name == cell.name ? 'selected="selected"' : ''}>${item.name}</option>
                     </c:forEach>
                 </select>
             </td>
             <td align="left"><select name="value">
                 <c:forEach var="item" items="${values}">
-                    <option value="${item}" ${item == cell.value ? 'selected="selected"' : ''}>${item}</option>
+                    <option value="${item.value}" ${item.value == cell.value ? 'selected="selected"' : ''}>${item.value}</option>
                 </c:forEach>
             </select>
             </td>

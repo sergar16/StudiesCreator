@@ -11,13 +11,15 @@
 <html>
 
 <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Main</title>
-
-    <%--<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />"/>--%>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-    <%--<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>--%>
+    <script type="text/javascript" src="<c:url value="/resources/js/keywebservice.js" />"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
@@ -34,10 +36,10 @@
                 <th> Key</th>
                 <th></th>
                 <c:forEach items="${keys}" var="cell">
-                    <tr>
-                        <td align="left"><input type="text" value="${cell.keyValue}"></td>
+                    <tr id="{cell.id}">
+                        <td align="left"><input id="key${cell.id}" type="text" value="${cell.keyValue}"></td>
                         <td>
-                            <button type="button" class="close" aria-label="Close"><span
+                            <button data-id="${cell.id}" id="w${cell.id}" onclick="deleteRow('dataKeyTable',${cell.id+1})" type="button" class="close" aria-label="Close" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>

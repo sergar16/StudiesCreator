@@ -1,4 +1,4 @@
-package entities.enabled;
+package entities.available.dcm;
 
 import entities.JPAEntity;
 
@@ -8,12 +8,12 @@ import javax.persistence.*;
  * Created by Logitech on 02.06.15.
  */
 @Entity
-@Table(name = "SAMPLING_PERIODS")
+@Table(name = "AVAILABLE_SAMPLING_PERIODS")
 public class SamplingPeriod implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    String id;
+    Long id;
     @Column(name = "SAMPLING_PERIOD")
     String samplingPeriod;
 
@@ -24,11 +24,11 @@ public class SamplingPeriod implements JPAEntity {
         this.samplingPeriod = samplingPeriod;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

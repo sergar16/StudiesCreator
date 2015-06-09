@@ -1,7 +1,6 @@
 package db.dao;
 
-import entities.enabled.Key;
-import entities.enabled.SamplingPeriod;
+import entities.available.dcm.SamplingPeriod;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class SamplingPeriodDAO extends EntityDAO<SamplingPeriod>{
         return (List<SamplingPeriod>) super.getSession().createQuery("SELECT c FROM SamplingPeriod c").list();
     }
     @Override
-    public SamplingPeriod findById(final String id) {
+    public SamplingPeriod findById(final Long id) {
         SamplingPeriod find = null;
         for (SamplingPeriod samplingPeriod : findAll()) {
             if (samplingPeriod.getId().equals(id)) {
@@ -44,8 +43,7 @@ public class SamplingPeriodDAO extends EntityDAO<SamplingPeriod>{
     public void update(final SamplingPeriod samplingPeriod) {
         Session session = super.getSession();
         session.beginTransaction();
-        SamplingPeriod deletedSamplingPeriod = findById(samplingPeriod.getId());
-        delete(deletedSamplingPeriod);
+        delete(samplingPeriod.getId());
         session.getTransaction().commit();
         session.beginTransaction();
         save(samplingPeriod);
@@ -53,8 +51,9 @@ public class SamplingPeriodDAO extends EntityDAO<SamplingPeriod>{
     }
 
     @Override
-    public void delete(SamplingPeriod samplingPeriod) {
+    public void delete(Long id) {
         Session session = super.getSession();
+        SamplingPeriod samplingPeriod=findById(id);
         session.beginTransaction();
         session.delete(samplingPeriod);
         session.getTransaction().commit();

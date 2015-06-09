@@ -2,11 +2,11 @@ package com.springapp.mvc;
 
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
-import entities.enabled.Key;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -17,16 +17,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @RequestMapping(value = "/keys", method = RequestMethod.GET)
-    public String show(ModelMap model) {
+    @RequestMapping(value = "/edit/dcm", method = RequestMethod.GET)
+    public String editDCM(ModelMap model) {
         EntityDAO entityDAO= DAOFactory.getKeyDAO();
         model.addAttribute("keys", entityDAO.findAll());
          entityDAO= DAOFactory.getSourceDAO();
         model.addAttribute("sources", entityDAO.findAll());
         entityDAO= DAOFactory.getSamplingPeriodDAO();
         model.addAttribute("samplingPeriods", entityDAO.findAll());
-        return "adminkeyseditor";
+        return "admindcmeditor";
     }
 
+    @RequestMapping(value = "/edit/conditions", method = RequestMethod.GET)
+    public String editConditions(ModelMap model) {
+        EntityDAO entityDAO= DAOFactory.getNamesDAO();
+        model.addAttribute("names", entityDAO.findAll());
+        entityDAO= DAOFactory.getValuesDAO();
+        model.addAttribute("values", entityDAO.findAll());
+        return "adminconditioneditor";
+    }
 
 }

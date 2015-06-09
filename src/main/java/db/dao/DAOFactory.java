@@ -19,6 +19,12 @@ public class DAOFactory {
     public static EntityDAO getSamplingPeriodDAO() {
         return new SamplingPeriodDAO();
     }
+    public static EntityDAO getNamesDAO() {
+        return new NameDAO();
+    }
+    public static EntityDAO getValuesDAO() {
+        return new ValueDAO();
+    }
 
 
 }

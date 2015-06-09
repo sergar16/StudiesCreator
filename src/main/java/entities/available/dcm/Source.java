@@ -1,4 +1,4 @@
-package entities.enabled;
+package entities.available.dcm;
 
 import entities.JPAEntity;
 
@@ -8,12 +8,12 @@ import javax.persistence.*;
  * Created by Logitech on 02.06.15.
  */
 @Entity
-@Table(name = "SOURCES")
+@Table(name = "AVAILABLE_SOURCES")
 public class Source implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private String id;
+    private Long id;
     @Column(name = "SOURCE")
     private String source;
 
@@ -24,11 +24,11 @@ public class Source implements JPAEntity {
         this.source = source;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

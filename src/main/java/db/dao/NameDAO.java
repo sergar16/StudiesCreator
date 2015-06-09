@@ -1,6 +1,6 @@
 package db.dao;
 
-import entities.available.dcm.Source;
+import entities.available.condition.Name;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -8,22 +8,23 @@ import java.util.List;
 /**
  * Created by Logitech on 03.06.15.
  */
-public class SourceDAO extends EntityDAO<Source>{
-    public SourceDAO() {
+public class NameDAO extends EntityDAO<Name> {
+
+    public NameDAO() {
         super();
     }
 
     @Override
-    public List<Source> findAll() {
+    public List<Name> findAll() {
 
-        return (List<Source>) super.getSession().createQuery("SELECT c FROM Source c").list();
+       return (List<Name>) super.getSession().createQuery("SELECT c FROM Name c").list();
     }
     @Override
-    public Source findById(final Long id) {
-        Source find = null;
-        for (Source samplingPeriod : findAll()) {
-            if (samplingPeriod.getId().equals(id)) {
-                find = samplingPeriod;
+    public Name findById(final Long id) {
+        Name find = null;
+        for (Name name : findAll()) {
+            if (name.getId().equals(id)) {
+                find = name;
                 break;
             }
         }
@@ -31,31 +32,31 @@ public class SourceDAO extends EntityDAO<Source>{
     }
 
     @Override
-    public void save(final Source source) {
+    public void save(final Name name) {
         Session session = super.getSession();
         session.beginTransaction();
-        session.save(source);
+        session.save(name);
         session.getTransaction().commit();
 
     }
 
     @Override
-    public void update(final Source source) {
+    public void update(final Name name) {
         Session session = super.getSession();
         session.beginTransaction();
-        delete(source.getId());
+        delete(name.getId());
         session.getTransaction().commit();
         session.beginTransaction();
-        save(source);
+        save(name);
         session.getTransaction().commit();
     }
 
     @Override
     public void delete(Long id) {
         Session session = super.getSession();
-        Source source=findById(id);
+        Name name=findById(id);
         session.beginTransaction();
-        session.delete(source);
+        session.delete(name);
         session.getTransaction().commit();
 
 
