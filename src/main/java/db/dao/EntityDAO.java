@@ -11,14 +11,14 @@ import java.util.List;
  * Created by Logitech on 03.06.15.
  */
 public abstract class EntityDAO<T extends JPAEntity> {
-    private Session session;
-
+    private static Session session;
+static { try {
+    session = Connector.getSessionFactory().openSession();
+} catch (Exception ex) {
+    ex.printStackTrace();
+}}
     public EntityDAO() {
-        try {
-            session = Connector.getSessionFactory().openSession();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+
     }
 
     public abstract List<T> findAll();

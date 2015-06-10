@@ -11,11 +11,9 @@
                 name="connection.url">jdbc:postgresql://studydb.cppkbsaxzz5s.eu-west-1.rds.amazonaws.com:5432/studydb</property>
         <property name="connection.username">ksolodkyy</property>
         <property name="connection.password">Logitech1234</property>
-        <property name="hibernate.connection.shard_id">4</property>
-        <property name="hibernate.shard.enable_cross_shard_relationship_checks">
-            true
-        </property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="connection_pool_size">10</property>
+
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class="entities.available.dcm.Key"/>
         <mapping class="entities.available.dcm.Source"/>
