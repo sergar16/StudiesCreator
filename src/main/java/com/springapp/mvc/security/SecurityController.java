@@ -19,6 +19,7 @@ public class SecurityController {
 		model.setViewName("public");
 		return model;
 
+
 	}
 
 	/*@RequestMapping(value = "/admin**", method = RequestMethod.GET)

@@ -16,10 +16,10 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Main</title>
+    <title>Admin DCM Options</title>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/keywebservice.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/dcmwebservice.js" />"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
@@ -39,25 +39,21 @@
                     <tr id="{cell.id}">
                         <td align="left"><input id="key${cell.id}" type="text" value="${cell.keyValue}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" onclick="deleteRow('dataKeyTable',${cell.id+1})" type="button" class="close" aria-label="Close" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="add" aria-label="Close"><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
-                        <td><button type="button" class="btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button></td>
+
+
                     </tr>
                 </c:forEach>
             </table>
 
-            <input type="button" value="delete" onclick="deleteRow('dataKeyTable')" style="width:100px;height:100px">
-            <input type="button" class="increment-button" value="add" onclick="addRow('dataKeyTable')"
-                   style="width:100px;height:100px">
 
         </div>
 
@@ -73,7 +69,12 @@
                     <tr>
                         <td align="left"><input type="text" value="${cell.source}"></td>
                         <td>
-                            <button type="button" class="close" aria-label="Close"><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                                    aria-hidden="true">&times;</span>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -81,10 +82,7 @@
                 </c:forEach>
             </table>
 
-            <input type="button" value="delete" onclick="deleteRow('dataSourceTable')" class="bu">
 
-
-            <input type="button" value="add" onclick="addRow('dataSourceTable')" class="increment-button">
         </div>
 
         <!--  Sampling periods-->
@@ -99,7 +97,12 @@
                     <tr>
                         <td align="left"><input type="text" value="${cell.samplingPeriod}"></td>
                         <td>
-                            <button type="button" class="close" aria-label="Close"><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                                    aria-hidden="true">&times;</span>
+                            </button>
+                        </td>
+                        <td>
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -107,12 +110,6 @@
                 </c:forEach>
             </table>
 
-            <input type="button" value="delete" onclick="deleteRow('dataSamplingPeriodsTable')"
-                   style="width:100px;height:100px">
-
-
-            <input type="button" value="add" onclick="addRow('dataSamplingPeriodsTable')"
-                   style="width:100px;height:100px">
         </div>
     </div>
 </div>

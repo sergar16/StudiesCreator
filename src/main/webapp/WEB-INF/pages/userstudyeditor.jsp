@@ -4,6 +4,9 @@
 <head>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
     <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>Study Editor</h1>
@@ -27,16 +30,21 @@
                 </c:forEach>
             </select>
             </td>
-
+            <td>
+                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </td>
+            <td>
+                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </td>
 
         </tr>
     </c:forEach>
 </table>
 
-<input type="button" value="delete" onclick="deleteRow('Conditions')" style="width:100px;height:100px">
-
-
-<input type="button" value="add" onclick="addRow('Conditions')" style="width:100px;height:100px">
 
 
 <table id="DCM" border="1">
@@ -69,15 +77,26 @@
                 </c:forEach>
             </select>
             </td>
+            <td>
+                <button data-id="${cell.id}" id="${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </td>
+            <td>
+                <button data-id="${cell.id}" id="${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </td>
 
 
         </tr>
     </c:forEach>
 </table>
-
+<div>
 <input type="button" value="delete" onclick="deleteRow('DCM')" style="width:100px;height:100px">
 
 
 <input type="button" value="add" onclick="addRow('DCM')" style="width:100px;height:100px">
+</div>
 </body>
 </html>

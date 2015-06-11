@@ -3,6 +3,8 @@ package db;
 import com.springapp.mvc.Mock;
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
+import db.dao.StudyDAO;
+import entities.Study;
 import entities.available.dcm.Key;
 
 /**

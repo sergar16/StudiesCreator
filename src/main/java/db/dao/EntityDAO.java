@@ -12,11 +12,6 @@ import java.util.List;
  */
 public abstract class EntityDAO<T extends JPAEntity> {
     private static Session session;
-static { try {
-    session = Connector.getSessionFactory().openSession();
-} catch (Exception ex) {
-    ex.printStackTrace();
-}}
     public EntityDAO() {
 
     }

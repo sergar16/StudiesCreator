@@ -1,4 +1,4 @@
-package com.springapp.mvc.services;
+package com.springapp.mvc.services.admin.dcm;
 
 import db.dao.DAOFactory;
 import entities.available.dcm.Key;
@@ -13,20 +13,19 @@ import java.util.List;
  * Created by Logitech on 04.06.15.
  */
 @RestController
-@RequestMapping("/keyOperations")
-public class AdminKeyOperations {
-    @RequestMapping(value = "/add/{keyValue}", method = RequestMethod.POST)
-    public void add(@PathVariable String keyValue) {
-        Key key = new Key(keyValue);
-        DAOFactory.getKeyDAO().save(key);
+@RequestMapping("/service/key")
+public class KeyService {
+    @RequestMapping(value = "/add/{value}", method = RequestMethod.POST)
+    public void add(@PathVariable String value) {
+        DAOFactory.getKeyDAO().save(new Key(value));
     }
 
-    @RequestMapping(value = "/delete/{keyId}", method = RequestMethod.POST)
-        public void delete(@PathVariable Long keyId) {
-        DAOFactory.getKeyDAO().delete(keyId);
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+        public void delete(@PathVariable Long id) {
+        DAOFactory.getKeyDAO().delete(id);
     }
 
-    @RequestMapping(value = "/update/{keyValue}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{value}", method = RequestMethod.POST)
     public void update(@PathVariable String keyValue) {
     }
 

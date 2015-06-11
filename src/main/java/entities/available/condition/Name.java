@@ -35,7 +35,7 @@ public class Name implements JPAEntity {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Override
     public Long getId() {
         return id;
     }

@@ -1,29 +1,39 @@
 package db.dao;
 
+import entities.Study;
+import entities.available.condition.Name;
+import entities.available.condition.Value;
+import entities.available.dcm.Key;
+import entities.available.dcm.SamplingPeriod;
+import entities.available.dcm.Source;
+
 /**
  * Created by Logitech on 03.06.15.
  */
 public class DAOFactory {
-    public static EntityDAO getStudyDAO() {
-        return new StudyDAO();
+
+    public static EntityDAO<Study> getStudyDAO() {
+        return new StudyDAO<Study>(Study.class);
     }
 
-    public static EntityDAO getKeyDAO() {
-        return new KeyDAO();
+    public static EntityDAO<Key> getKeyDAO() {
+        return new StudyDAO<Key>(Key.class);
     }
 
-    public static EntityDAO getSourceDAO() {
-        return new SourceDAO();
+    public static EntityDAO<Source> getSourceDAO() {
+        return new StudyDAO<Source>(Source.class);
     }
 
-    public static EntityDAO getSamplingPeriodDAO() {
-        return new SamplingPeriodDAO();
+    public static EntityDAO<SamplingPeriod> getSamplingPeriodDAO() {
+        return new StudyDAO<SamplingPeriod>(SamplingPeriod.class);
     }
-    public static EntityDAO getNamesDAO() {
-        return new NameDAO();
+
+    public static EntityDAO<Name> getNamesDAO() {
+        return new StudyDAO<Name>(Name.class);
     }
-    public static EntityDAO getValuesDAO() {
-        return new ValueDAO();
+
+    public static EntityDAO<Value> getValuesDAO() {
+        return new StudyDAO<Value>(Value.class);
     }
 
 

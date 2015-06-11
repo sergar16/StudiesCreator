@@ -53,14 +53,14 @@
         <c:if test="${not empty msg}">
             <div class="msg">${msg}</div>
         </c:if>
-        <p align="left"><label class="control-label" id="username" style="display:none;">&nbsp;&nbsp;Windows
+        <p align="left"><label class="control-label" id="username" style="display:none;">&nbsp;
             username</label></p>
 
         <p align="center"><input type="text" class="form-control" placeholder="Windows username" name="username"
                                  size="25" maxlength="30"></p>
 
 
-        <p align="left"><label class="control-label" id="password"  style="display:none;">&nbsp;&nbsp;Windows
+        <p align="left"><label class="control-label" id="password"  style="display:none;">&nbsp;
             password</label></p>
 
         <p align="center"><input type="password"  class="form-control" placeholder="Windows password" name="password"

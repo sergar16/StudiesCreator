@@ -8,15 +8,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@NamedQueries({@NamedQuery(name = "Study.findAll", query = "SELECT s FROM Study s")})
 public class Study implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     @ElementCollection
     Set<Condition> conditions=new HashSet<>();
     @ElementCollection
     Set<DCM> dcm=new HashSet<>();
+
 
     public Long getId() {
         return id;
@@ -40,5 +41,13 @@ public class Study implements JPAEntity {
 
     public void setDcm(Set<DCM> dcm) {
         this.dcm = dcm;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

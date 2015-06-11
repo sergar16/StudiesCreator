@@ -2,6 +2,8 @@ package com.springapp.mvc;
 
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
+import db.dao.StudyDAO;
+import entities.Study;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

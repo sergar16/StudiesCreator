@@ -12,10 +12,12 @@
         <intercept-url pattern="/admin/edit/dcm**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/edit/conditions**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/study/edit**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/user/studies**" access="ROLE_ADMIN"/>
 
         <intercept-url pattern="/keyOperations/showAll**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/keyOperations/delete**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/keyOperations/add**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/resources**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 
 
         <intercept-url pattern="/login**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
@@ -37,6 +39,7 @@
 
             <user-service>
                 <user name="ksolodkyy" password="Logitech1234" authorities="ROLE_ADMIN" />
+                <user name="test" password="111" authorities="ROLE_ADMIN" />
 
             </user-service>
            <!--

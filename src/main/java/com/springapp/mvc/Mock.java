@@ -2,6 +2,7 @@ package com.springapp.mvc;
 
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
+import db.dao.StudyDAO;
 import entities.Condition;
 import entities.DCM;
 import entities.Study;
@@ -23,6 +24,7 @@ public class Mock {
 
     static {
         studyMock.setId(1l);
+        studyMock.setName("Gaming Mouse");
         Set<Condition> conditions = new HashSet<>();
         conditions.add(new Condition("os_type", "windows"));
         conditions.add(new Condition("device_type", "mouce"));
@@ -37,8 +39,17 @@ public class Mock {
         studyMock.setConditions(conditions);
 
 
-    }
 
+    }
+    public static ArrayList<String> studiesNames = new ArrayList<>();
+
+    static {
+        studiesNames.add("Mouse Gaming");
+        studiesNames.add("Keyboards");
+        studiesNames.add("Gamepads");
+        studiesNames.add("Europe Mouses");
+        studiesNames.add("American Keyboards and Mouses");
+    }
 
     public static ArrayList<Key> keys = new ArrayList<>();
 
@@ -74,7 +85,7 @@ public class Mock {
 
     public static void init() {
         EntityDAO entityDAO=DAOFactory.getStudyDAO();
-        entityDAO.save(studyMock);
+        generateStudies().stream().forEach(entityDAO::save);
          entityDAO= DAOFactory.getKeyDAO();
             entityDAO.save(new Key( "analytics_test"));
             entityDAO.save(new Key( "core_test"));
@@ -108,6 +119,33 @@ public class Mock {
 
 
 
+    }
+
+    public static ArrayList<Study> generateStudies(){
+        ArrayList<Study> studies=new ArrayList<>();
+        for (int i=1;i<studiesNames.size();i++){
+            Study study=new Study();
+          study.setName(studiesNames.get(i));
+            study.setId(new Long(i));
+            Set<Condition> conditions = new HashSet<>();
+            conditions.add(new Condition("os_type", "windows"));
+            conditions.add(new Condition("device_type", "mouce"));
+
+            Set<DCM> dcms = new HashSet<>();
+            dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
+            dcms.add(new DCM("client_version", "test.values.random", "0:0:0:0:0:5"));
+            dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
+            dcms.add(new DCM("analytics_test", "test.values.cycle", "0:0:0:0:0:200"));
+            dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
+            study.setDcm(dcms);
+            study.setConditions(conditions);
+            study.getConditions().stream().forEach(condition -> {
+                condition.setName(names.get((int)Math.random()*names.size()).getName());
+            });
+            studies.add(study);
+
+        }
+        return studies;
     }
 }
 

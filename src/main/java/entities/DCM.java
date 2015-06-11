@@ -53,6 +53,13 @@ public class DCM implements Serializable{
         this.samplingPeriod = samplingPeriod;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {

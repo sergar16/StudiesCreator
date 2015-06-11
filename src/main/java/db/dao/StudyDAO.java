@@ -1,63 +1,78 @@
 package db.dao;
 
+import com.springapp.mvc.Mock;
+import db.Connector;
+import entities.JPAEntity;
 import entities.Study;
+import entities.available.dcm.Key;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Optional;
 
-public class StudyDAO extends EntityDAO<Study> {
+public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
 
 
-
-    public StudyDAO() {
-  }
-
-    @Override
-    public List<Study> findAll() {
-        return (List<Study>) super.getSession().createQuery("SELECT c FROM Study c").list();
+    private static Session session;
+    static { try {
+        session = Connector.getSessionFactory().openSession();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }}
+    public StudyDAO(Class<T> type) {
+        this.type = type;
     }
 
-    public Study findById(final Long id) {
-        Study find = null;
-        for (Study Study : findAll()) {
-            if (Study.getId().equals(id)) {
-                find = Study;
-                break;
-            }
-        }
-        return find;
+
+
+    public List<T> findAll() {
+        final Criteria crit = session.createCriteria(type);
+        return crit.list();
     }
 
-    @Override
-    public void save(final Study study) {
-        Session session = super.getSession();
+    public T findById(final Long id) {
+      return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
+
+    }
+
+
+    public void save(final T t) {
 
         session.beginTransaction();
-        session.save(study);
+        session.save(t);
         session.getTransaction().commit();
 
     }
 
-    @Override
-    public void update(final Study study) {
-        Session session = super.getSession();
+    public void update(final T t) {
         session.beginTransaction();
-        delete(study.getId());
+        delete(t.getId());
         session.getTransaction().commit();
         session.beginTransaction();
-        save(study);
+        save(t);
         session.getTransaction().commit();
     }
 
-    @Override
+
     public void delete(Long id) {
-        Session session = super.getSession();
-       Study study =findById(id);
+       T t =findById(id);
         session.beginTransaction();
-        session.delete(study);
+        session.delete(t);
         session.getTransaction().commit();
 
 
+    }
+
+    public static void main(String[] a) {
+        Mock.init();
+        System.out.print(new StudyDAO<Key>(Key.class).findAll());
+    }
+    private final Class<T> type;
+
+
+    public Class<T> getMyType() {
+        return this.type;
     }
 
 }
