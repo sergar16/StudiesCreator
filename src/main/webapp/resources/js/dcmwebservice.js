@@ -1,14 +1,16 @@
 
 
+var host="http://46.137.108.187";
+//http://localhost:8082
 (function ($) {
 
     $(function ($) {
 
-        $('#dataKeyTable').on('click', '.close', function (e) {
+        $('#dataKeyTable').on('click', 'tr td:last-child .close', function (e) {
             console.log('ID', $(this).data('id'));
             $(this).closest('tr').remove();
             $.ajax({
-                url: 'http://localhost:8082/service/key/delete/'+$(this).data('id'),
+                url: host+'/service/key/delete/'+$(this).data('id'),
                 type: 'POST',
                 data: {
                     'id': $(this).data('id')
@@ -22,11 +24,11 @@
     })
     $(function ($) {
 
-        $('#dataSourceTable').on('click', '.close', function (e) {
+        $('#dataSourceTable').on('click', 'tr td:last-child .close', function (e) {
             console.log('ID', $(this).data('id'));
             $(this).closest('tr').remove();
             $.ajax({
-                url: 'http://localhost:8082/service/source/delete/'+$(this).data('id'),
+                url: host+'/service/source/delete/'+$(this).data('id'),
                 type: 'POST',
                 data: {
                     'id': $(this).data('id')
@@ -44,7 +46,7 @@
             console.log('ID', $(this).data('id'));
             $(this).closest('tr').remove();
             $.ajax({
-                url: 'http://localhost:8082/service/samplingPeriod/delete/'+$(this).data('id'),
+                url: host+'/service/samplingPeriod/delete/'+$(this).data('id'),
                 type: 'POST',
                 data: {
                     'id': $(this).data('id')

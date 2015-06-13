@@ -1,25 +1,33 @@
 package com.springapp.mvc.security.user;
 
+import entities.JPAEntity;
+import entities.Study;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users", catalog = "test")
-public class User {
-
+public class User implements JPAEntity {
+   @Id
+   @GeneratedValue
+    private Long id;
     private String username;
     private String password;
     private boolean enabled;
+   /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Study> studies;*/
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
     public User() {
     }
 
-    public User(String username, String password, boolean enabled) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.enabled = enabled;
     }
 
     public User(String username, String password,
@@ -67,6 +75,14 @@ public class User {
 
     public void setUserRole(Set<UserRole> userRole) {
         this.userRole = userRole;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

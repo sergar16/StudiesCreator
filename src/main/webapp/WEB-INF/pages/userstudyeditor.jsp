@@ -2,19 +2,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
+    <title>Study Editor</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
-    <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<h1>Study Editor</h1>
+<jsp:include page="header.jsp"/>
+
 <table id="Conditions" align="left" border="1" style="margin-right: 30px">
     <caption><h1>Conditions</h1></caption>
     <th>name</th>
     <th> value</th>
-
+    <th></th>
+    <th></th>
     <c:forEach items="${study.conditions}" var="cell">
         <tr>
             <td align="left">
@@ -31,7 +33,8 @@
             </select>
             </td>
             <td>
-                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                        style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('Conditions')" ><span
                         aria-hidden="true">&times;</span>
                 </button>
             </td>
@@ -52,8 +55,9 @@
     <th>key</th>
     <th>source</th>
     <th>sampling period</th>
-
-    <c:forEach items="${study.dcm}" var="cell">
+    <th></th>
+    <th></th>
+        <c:forEach items="${study.dcm}" var="cell">
 
         <tr>
             <td align="left">
@@ -78,7 +82,8 @@
             </select>
             </td>
             <td>
-                <button data-id="${cell.id}" id="${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                        style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('DCM')" ><span
                         aria-hidden="true">&times;</span>
                 </button>
             </td>
@@ -92,11 +97,10 @@
         </tr>
     </c:forEach>
 </table>
-<div>
-<input type="button" value="delete" onclick="deleteRow('DCM')" style="width:100px;height:100px">
 
-
-<input type="button" value="add" onclick="addRow('DCM')" style="width:100px;height:100px">
-</div>
 </body>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js">
+<script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/studywebservice.js" />"></script>
 </html>

@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
-    <title>Login Page</title>
+<head>  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Login</title>
     <style>
         .error {
             padding: 15px;
@@ -32,12 +33,20 @@
             -moz-border-radius: 2px;
             border: 1px solid #000;
         }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 5px rgba(0,0,0,.2);
+        }
+
     </style>
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body onload='document.loginForm.username.focus();' style="  background-color: #CBCBCB;">
 
 
-<div id="login-box">
+<div id="login-box" style="border-radius: 10px;box-shadow: 0 0 150px rgba(0,0,0,5);border: none;">
 
 
 
@@ -70,9 +79,9 @@
         <input type="hidden" name="realm" value="Logitech">
 
 
-        <p align="center"><input class="btn btn-custom" type="submit" value="Sign In" name="btnSubmit"></p>
+        <p align="center"><input class="btn btn-primary" type="submit" value="Sign In" name="btnSubmit"></p>
 
-        <p style="text-align:justify; margin-top: 18px;" align="center" class="list-group-item"><font size="2"
+        <p style="text-align:justify; margin-top: 18px;border-radius: 10px;" align="center" class="list-group-item"><font size="2"
                                                                                                       face="sans-serif">To
             protect your account from unauthorized access, your session will end after a period of inactivity. If your
             session ends, please close your browser and open a new session.</font></p>

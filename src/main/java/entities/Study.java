@@ -2,6 +2,8 @@ package entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.util.HashSet;
@@ -11,6 +13,7 @@ import java.util.Set;
 public class Study implements JPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
     private String name;
     @ElementCollection

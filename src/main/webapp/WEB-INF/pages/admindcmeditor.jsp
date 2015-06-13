@@ -23,28 +23,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
+    <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
+
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 
-<h2 align="center"> Admin DCM Options</h2>
 
 <div class="container-fluid">
     <div class="row text-center">
         <div class="col-md-4">
             <table id="dataKeyTable" class="table" border="1">
-                <caption><h1>Available Keys</h1></caption>
-                <th> Key</th>
+                <th><h3>Available Keys</h3></th>
                 <th></th>
                 <c:forEach items="${keys}" var="cell">
                     <tr id="{cell.id}">
                         <td align="left"><input id="key${cell.id}" type="text" value="${cell.keyValue}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataKeyTable')" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
+                                    style="float: none"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -60,21 +63,20 @@
         <!--  Sources-->
         <div class="col-md-4">
             <table id="dataSourceTable" class="table" border="1">
-                <caption><h1>Available Sources</h1></caption>
-
-                <th> Source</th>
+                <th><h3>Available Sources</h3></th>
                 <th></th>
                 <c:forEach items="${sources}" var="cell">
-
                     <tr>
                         <td align="left"><input type="text" value="${cell.source}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataSourceTable')" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
+                                    style="float: none"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -89,20 +91,22 @@
 
         <div class="col-md-4">
             <table id="dataSamplingPeriodsTable" class="table" border="1">
-                <caption><h1>Available Sampling Periods</h1></caption>
-                <th> Sampling period</th>
+                <th><h3>Available Sampling Periods</h3>
+                </th>
                 <th></th>
                 <c:forEach items="${samplingPeriods}" var="cell">
 
                     <tr>
                         <td align="left"><input type="text" value="${cell.samplingPeriod}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataSamplingPeriodsTable')" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
+                                    style="float: none"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>

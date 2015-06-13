@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +10,8 @@ import java.io.Serializable;
  */
 @Embeddable
 public class DCM implements Serializable{
-    
+
+    @JsonIgnore
     String id;
 
     @Column(name = "KEY")

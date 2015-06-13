@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import com.springapp.mvc.security.user.User;
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
 import db.dao.StudyDAO;
@@ -27,7 +28,7 @@ public class Mock {
         studyMock.setName("Gaming Mouse");
         Set<Condition> conditions = new HashSet<>();
         conditions.add(new Condition("os_type", "windows"));
-        conditions.add(new Condition("device_type", "mouce"));
+        conditions.add(new Condition("device_type", "mouse"));
 
         Set<DCM> dcms = new HashSet<>();
         dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
@@ -48,7 +49,7 @@ public class Mock {
         studiesNames.add("Keyboards");
         studiesNames.add("Gamepads");
         studiesNames.add("Europe Mouses");
-        studiesNames.add("American Keyboards and Mouses");
+        studiesNames.add("USA Keyboards and Mouses");
     }
 
     public static ArrayList<Key> keys = new ArrayList<>();
@@ -84,9 +85,30 @@ public class Mock {
     }
 
     public static void init() {
-        EntityDAO entityDAO=DAOFactory.getStudyDAO();
+/*
+        EntityDAO entityDAO=DAOFactory.getUserDAO();
+        User user1=new User("ksolodkyy","Logitech1234");
+        User user2=new User("test","123");
+        User user3=new User("test1","111");
+        User user4=new User("test2","111");
+        User user5=new User("sergar16","111");
+        user1.setStudies(generateStudies());
+        user2.setStudies(generateStudies());
+        user3.setStudies(generateStudies());
+        user4.setStudies(generateStudies());
+        user5.setStudies(generateStudies());
+        entityDAO.save(user1);
+        entityDAO.save(user2);
+        entityDAO.save(user3);
+        entityDAO.save(user4);
+        entityDAO.save(user5);*/
+
+      EntityDAO  entityDAO=DAOFactory.getStudyDAO();
         generateStudies().stream().forEach(entityDAO::save);
-         entityDAO= DAOFactory.getKeyDAO();
+
+        entityDAO= DAOFactory.getKeyDAO();
+
+
             entityDAO.save(new Key( "analytics_test"));
             entityDAO.save(new Key( "core_test"));
             entityDAO.save(new Key( "analytics_test1"));
@@ -129,7 +151,9 @@ public class Mock {
             study.setId(new Long(i));
             Set<Condition> conditions = new HashSet<>();
             conditions.add(new Condition("os_type", "windows"));
-            conditions.add(new Condition("device_type", "mouce"));
+            conditions.add(new Condition("device_type", "mouse"));
+            conditions.add(new Condition("region", "USA"));
+            conditions.add(new Condition("region", "Europe"));
 
             Set<DCM> dcms = new HashSet<>();
             dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
@@ -137,10 +161,25 @@ public class Mock {
             dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
             dcms.add(new DCM("analytics_test", "test.values.cycle", "0:0:0:0:0:200"));
             dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
+
+            for (int j=0;j<Math.random()*dcms.size();j++){
+                if (((int) Math.random() * 100) % 2 == 0) {
+                   dcms.remove(dcms.iterator().next());
+                }
+            }
+            for (int j=0;j<Math.random()*conditions.size();j++){
+                if (((int) Math.random() * 100) % 2 == 0) {
+                    dcms.remove(conditions.iterator().next());
+                }
+            }
+
+
+
             study.setDcm(dcms);
+
             study.setConditions(conditions);
             study.getConditions().stream().forEach(condition -> {
-                condition.setName(names.get((int)Math.random()*names.size()).getName());
+                condition.setName(names.get((int) Math.random() * names.size()).getName());
             });
             studies.add(study);
 

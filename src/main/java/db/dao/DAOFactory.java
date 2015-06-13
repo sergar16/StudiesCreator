@@ -1,5 +1,6 @@
 package db.dao;
 
+import com.springapp.mvc.security.user.User;
 import entities.Study;
 import entities.available.condition.Name;
 import entities.available.condition.Value;
@@ -11,10 +12,13 @@ import entities.available.dcm.Source;
  * Created by Logitech on 03.06.15.
  */
 public class DAOFactory {
-
+    public static EntityDAO<User> getUserDAO() {
+        return new StudyDAO<User>(User.class);
+    }
     public static EntityDAO<Study> getStudyDAO() {
         return new StudyDAO<Study>(Study.class);
     }
+
 
     public static EntityDAO<Key> getKeyDAO() {
         return new StudyDAO<Key>(Key.class);

@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,6 +11,8 @@ import java.io.Serializable;
 @Embeddable
 public class Condition implements Serializable {
 
+
+    @JsonIgnore
     String id;
     String name;
     String value;

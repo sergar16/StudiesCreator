@@ -14,37 +14,43 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Admin DCM Options</title>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/studieswebservice.js" />"></script>
+    <title>Studies List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
+    <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
 </head>
 <body>
-
+<jsp:include page="header.jsp"/>
 
 
 <div class="container-fluid">
     <div class="row text-center">
         <div class="col-md-4">
             <table id="dataStudiesTable" class="table" border="1">
-                <caption><h1>Studies</h1></caption>
-                <th> Key</th>
+
+                <th>Studies</th>
                 <th></th>
                 <c:forEach items="${studies}" var="cell">
                     <tr id="{cell.id}">
-                        <td align="left"><input id="key${cell.id}" type="text" value="${cell.name}"></td>
+                        <td align="left"><input id="key${cell.id}" class="inputtext" type="text" value="${cell.name}"></td>
+
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="-webkit-transform: rotateZ(45deg);float: none" ><span
+                            <form action=<c:url value="/user/edit/${cell.id}"/>>
+                                <input type="submit" id="${cell.id}" value="edit"/>
+                            </form>
+                        </td>
+
+                        <td>
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataStudiesTable')" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
+
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
+                                    style="float: none"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -52,14 +58,16 @@
                 </c:forEach>
             </table>
 
-
-
         </div>
-
-
 
     </div>
 </div>
 </body>
+<%--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/studieswebservice.js" />"></script>
 </html>
 

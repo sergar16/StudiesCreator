@@ -12,7 +12,7 @@
         <intercept-url pattern="/admin/edit/dcm**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/edit/conditions**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/study/edit**" access="ROLE_ADMIN" />
-        <intercept-url pattern="/user/studies**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/user**" access="ROLE_ADMIN"/>
 
         <intercept-url pattern="/keyOperations/showAll**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/keyOperations/delete**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
@@ -24,7 +24,7 @@
 
         <form-login
                 login-page="/login"
-                default-target-url="/welcome"
+                default-target-url="/user/studies"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password" />
