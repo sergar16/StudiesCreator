@@ -15,13 +15,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Admin Condition Options</title>
   <%--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>--%>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-  <script type="text/javascript" src="<c:url value="/resources/js/conditionwebservice.js" />"></script>
-  <script type="text/javascript" src="<c:url value="/resources/js/main.js" />"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
   <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
 
@@ -49,6 +44,11 @@
       <table id="dataNameTable" class="table" border="1">
         <th> <h3>Names</h3></th>
         <th></th>
+        <th align="center">
+          <button id="savename" type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+          </button>
+        </th>
         <c:forEach items="${names}" var="cell">
           <tr id="${cell.id}">
             <td align="left"><input  type="text" class="inputtext" value="${cell.name}"></td>
@@ -66,19 +66,24 @@
           </tr>
         </c:forEach>
       </table>
-      <button id="savename">Save</button>
+
 
     </div>
 
-    <!--  Sources-->
+    <!--  Values-->
     <div class="col-md-6">
       <table id="dataValueTable" class="table" border="1">
 
-        <th> <h3>Available Values</h3></th>
+        <th align="center"> <h3>Values</h3></th>
         <th></th>
+        <th align="center">
+          <button id="savevalue" type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+          </button>
+        </th>
         <c:forEach items="${values}" var="cell">
 
-          <tr>
+          <tr id="${cell.id}">
             <td align="left"><input type="text" value="${cell.value}"></td>
             <td>
               <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
@@ -94,7 +99,7 @@
           </tr>
         </c:forEach>
       </table>
-      <button id="savevalue">Save</button>
+
 
 
     </div>
@@ -104,6 +109,11 @@
   </div>
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/conditionWebService.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/main.js" />"></script>
 
 </html>
 

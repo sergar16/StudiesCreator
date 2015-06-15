@@ -5,6 +5,7 @@ import db.Connector;
 import entities.JPAEntity;
 import entities.Study;
 import entities.available.dcm.Key;
+import exceptions.NoSuchElementException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
@@ -31,9 +32,10 @@ public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
         return crit.list();
     }
 
-    public T findById(final Long id) {
-      return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
-
+    public T findById(final long id) throws NoSuchElementException{
+      Optional<T> optional= findAll().stream().filter(t -> t.getId() == id).findFirst();
+       if(optional.isPresent()){return optional.get();}
+        throw new NoSuchElementException();
     }
 
 
@@ -44,18 +46,27 @@ public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
         session.getTransaction().commit();
 
     }
+    public void saveOrUpdate(final T t) {
+    try {
+        session.beginTransaction();
+        session.saveOrUpdate(t);
+        session.getTransaction().commit();
+    }catch (Exception ex){}
+    }
 
     public void update(final T t) {
-        session.beginTransaction();
-        delete(t.getId());
-        session.getTransaction().commit();
-        session.beginTransaction();
-        save(t);
-        session.getTransaction().commit();
+//        session.beginTransaction();
+//       try{
+//        delete(t.getId());}catch (Exception ex){}
+//        session.getTransaction().commit();
+//        session.beginTransaction();
+//        save(t);
+//        session.getTransaction().commit();
+        session.update(t);
     }
 
 
-    public void delete(Long id) {
+    public void delete(long id) {
        T t =findById(id);
         session.beginTransaction();
         session.delete(t);

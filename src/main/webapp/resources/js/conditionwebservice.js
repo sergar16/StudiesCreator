@@ -48,7 +48,7 @@ var host = "http://localhost:8082";
                 console.log(id);
                 var value = this.cells[0].firstChild.value;
                 console.log(value);
-                var data = {id:id,name:value};
+                var data = {id:id,value:value};
                 nameList.push(data);
             });
             console.log(nameList);
@@ -83,12 +83,12 @@ var host = "http://localhost:8082";
                 var data = {id:id,value:value};
                 valueList.push(data);
             });
-            console.log(nameList);
+            console.log(valueList);
             $.ajax({
                 url: host + '/service/value/updateAll/' + JSON.stringify(valueList),
                 type: 'POST',
                 data: {
-                    'id': $(this).data('id')
+
                 },
                 success: function () {
                 }

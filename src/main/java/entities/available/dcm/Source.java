@@ -11,9 +11,9 @@ import javax.persistence.*;
 @Table(name = "AVAILABLE_SOURCES")
 public class Source implements JPAEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long id;
+    private long id;
     @Column(name = "SOURCE")
     private String source;
 
@@ -24,11 +24,16 @@ public class Source implements JPAEntity {
         this.source = source;
     }
 
-    public Long getId() {
+    public Source(long id,String source) {
+        this.source = source;
+        this.id=id;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -38,5 +43,32 @@ public class Source implements JPAEntity {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Source source1 = (Source) o;
+
+        if (id != source1.id) return false;
+        return !(source != null ? !source.equals(source1.source) : source1.source != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (source != null ? source.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Source{" +
+                "id=" + id +
+                ", source='" + source + '\'' +
+                '}';
     }
 }

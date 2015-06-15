@@ -14,7 +14,7 @@ import java.util.Set;
 public class User implements JPAEntity {
    @Id
    @GeneratedValue
-    private Long id;
+    private long id;
     private String username;
     private String password;
     private boolean enabled;
@@ -77,11 +77,11 @@ public class User implements JPAEntity {
         this.userRole = userRole;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

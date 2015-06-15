@@ -12,19 +12,22 @@ import java.util.List;
  */
 public abstract class EntityDAO<T extends JPAEntity> {
     private static Session session;
+
     public EntityDAO() {
 
     }
 
     public abstract List<T> findAll();
 
-    public abstract T findById(final Long id);
+    public abstract T findById(final long id);
 
     public abstract void save(final T jpaEntity);
 
+    public abstract void saveOrUpdate(final T jpaEntity);
+
     public abstract void update(final T jpaEntity);
 
-    public abstract void delete(final Long id);
+    public abstract void delete(final long id);
 
     public Session getSession() {
         return session;

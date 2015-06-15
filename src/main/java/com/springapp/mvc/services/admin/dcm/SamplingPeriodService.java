@@ -1,7 +1,7 @@
 package com.springapp.mvc.services.admin.dcm;
 
+import db.Updater;
 import db.dao.DAOFactory;
-import entities.available.dcm.Key;
 import entities.available.dcm.SamplingPeriod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +28,10 @@ public class SamplingPeriodService {
 
     @RequestMapping(value = "/update/{value}", method = RequestMethod.POST)
     public void update(@PathVariable String keyValue) {
+    }
+    @RequestMapping(value = "/updateAll/{values}", method = RequestMethod.POST)
+    public void updateAll(@PathVariable String values) {
+        Updater.updateSamplingPeriods(values);
     }
 
     @RequestMapping(value = "/showAll", method = RequestMethod.GET)

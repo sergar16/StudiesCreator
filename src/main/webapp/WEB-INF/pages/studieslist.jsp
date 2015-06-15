@@ -31,8 +31,13 @@
 
                 <th>Studies</th>
                 <th></th>
+                <th align="center">
+                    <button id="saveStudies" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    </button>
+                </th>
                 <c:forEach items="${studies}" var="cell">
-                    <tr id="{cell.id}">
+                    <tr id="${cell.id}">
                         <td align="left"><input id="key${cell.id}" class="inputtext" type="text" value="${cell.name}"></td>
 
                         <td>
@@ -42,7 +47,7 @@
                         </td>
 
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
+                            <button data-id="${cell.id}" id="${cell.id}" type="button" class="close add" aria-label="Close"
                                     style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataStudiesTable')" ><span
                                     aria-hidden="true">&times;</span>
                             </button>
@@ -57,17 +62,17 @@
                     </tr>
                 </c:forEach>
             </table>
-
         </div>
 
     </div>
 </div>
+
 </body>
 <%--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/tableeditor.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/studieswebservice.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/studiesWebService.js" />"></script>
 </html>
 

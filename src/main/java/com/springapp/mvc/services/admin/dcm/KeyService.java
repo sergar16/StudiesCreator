@@ -1,5 +1,6 @@
 package com.springapp.mvc.services.admin.dcm;
 
+import db.Updater;
 import db.dao.DAOFactory;
 import entities.available.dcm.Key;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,10 @@ public class KeyService {
     @RequestMapping(value = "/update/{value}", method = RequestMethod.POST)
     public void update(@PathVariable String keyValue) {
     }
-
+    @RequestMapping(value = "/updateAll/{values}", method = RequestMethod.POST)
+    public void updateAll(@PathVariable String values) {
+        Updater.updateKeys(values);
+    }
     @RequestMapping(value = "/showAll", method = RequestMethod.GET)
     public List<Key> update() {
         return DAOFactory.getKeyDAO().findAll();

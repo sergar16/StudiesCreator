@@ -62,26 +62,26 @@ public class Mock {
 
     public static ArrayList<Name> names = new ArrayList<>();
     static {
-        names.add(new Name("client_name"));
-        names.add(new Name("os_type"));
-        names.add(new Name("os_version"));
-        names.add(new Name("device_id"));
-        names.add(new Name("device_name"));
-        names.add(new Name("region_name"));
+        names.add(new Name(1l,"client_name"));
+        names.add(new Name(2l,"os_type"));
+        names.add(new Name(3l,"os_version"));
+        names.add(new Name(4l,"device_id"));
+        names.add(new Name(5l,"device_name"));
+        names.add(new Name(6l,"region_name"));
     }
 
 
     public static ArrayList<Value> values=new ArrayList<>();
     static {
-        values.add(new Value("windows"));
-        values.add(new Value("Linux"));
-        values.add(new Value("mac"));
-        values.add(new Value("mouse"));
-        values.add(new Value("keyboard"));
-        values.add(new Value("webcam"));
-        values.add(new Value("gameing keyboard"));
-        values.add(new Value("wireless dev"));
-        values.add(new Value("eu-west-1"));
+        values.add(new Value(1l,"windows"));
+        values.add(new Value(2,"Linux"));
+        values.add(new Value(3,"mac"));
+        values.add(new Value(4,"mouse"));
+        values.add(new Value(5,"keyboard"));
+        values.add(new Value(6,"webcam"));
+        values.add(new Value(7,"gameing keyboard"));
+        values.add(new Value(8,"wireless dev"));
+        values.add(new Value(9,"eu-west-1"));
     }
 
     public static void init() {
@@ -109,29 +109,34 @@ public class Mock {
         entityDAO= DAOFactory.getKeyDAO();
 
 
-            entityDAO.save(new Key( "analytics_test"));
-            entityDAO.save(new Key( "core_test"));
-            entityDAO.save(new Key( "analytics_test1"));
-            entityDAO.save(new Key( "core_test2"));
-        entityDAO.save(new Key("client_name"));
-        entityDAO.save(new Key("core_test"));
-        entityDAO.save(new Key("client_version"));
+            entityDAO.save(new Key(1, "analytics_test"));
+            entityDAO.save(new Key(2, "core_test"));
+            entityDAO.save(new Key(3, "analytics_test1"));
+            entityDAO.save(new Key(4, "core_test2"));
+        entityDAO.save(new Key(5,"client_name"));
+        entityDAO.save(new Key(6,"core_test"));
+        entityDAO.save(new Key(7,"client_version"));
 
 
 
         entityDAO= DAOFactory.getSourceDAO();
-            entityDAO.save(new Source("test.values.random"));
-        entityDAO.save(new Source("test.values.random"));
-        entityDAO.save(new Source("test.mock"));
-        entityDAO.save(new Source("test.values.cycle"));
-        entityDAO.save(new Source("test.string.random"));
+//            entityDAO.save(new Source(1,"test.values.random"));
+//        entityDAO.save(new Source(2,"test.values.random"));
+//        entityDAO.save(new Source(3,"test.mock"));
+//        entityDAO.save(new Source(4,"test.values.cycle"));
+//        entityDAO.save(new Source(5,"test.string.random"));
+ entityDAO.save(new Source(1,"test-values-random"));
+        entityDAO.save(new Source(2,"test-values-random"));
+        entityDAO.save(new Source(3,"test-mock"));
+        entityDAO.save(new Source(4,"test-values-cycle"));
+        entityDAO.save(new Source(5,"test-string-random"));
 
 
         entityDAO= DAOFactory.getSamplingPeriodDAO();
-        entityDAO.save(new SamplingPeriod("0:0:0:0:0:5"));
-        entityDAO.save(new SamplingPeriod("0:0:0:0:0:10"));
-        entityDAO.save(new SamplingPeriod("0:0:0:0:0:100"));
-        entityDAO.save(new SamplingPeriod("0:0:0:0:0:200"));
+        entityDAO.save(new SamplingPeriod(1,"0:0:0:0:0:5"));
+        entityDAO.save(new SamplingPeriod(2,"0:0:0:0:0:10"));
+        entityDAO.save(new SamplingPeriod(3,"0:0:0:0:0:100"));
+        entityDAO.save(new SamplingPeriod(4,"0:0:0:0:0:200"));
 
         entityDAO=DAOFactory.getNamesDAO();
         names.stream().forEach(entityDAO::save);
@@ -148,7 +153,7 @@ public class Mock {
         for (int i=1;i<studiesNames.size();i++){
             Study study=new Study();
           study.setName(studiesNames.get(i));
-            study.setId(new Long(i));
+            study.setId(i);
             Set<Condition> conditions = new HashSet<>();
             conditions.add(new Condition("os_type", "windows"));
             conditions.add(new Condition("device_type", "mouse"));
@@ -156,10 +161,15 @@ public class Mock {
             conditions.add(new Condition("region", "Europe"));
 
             Set<DCM> dcms = new HashSet<>();
-            dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
-            dcms.add(new DCM("client_version", "test.values.random", "0:0:0:0:0:5"));
+//            dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
+//            dcms.add(new DCM("client_version", "test.values.random", "0:0:0:0:0:5"));
+//            dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
+//            dcms.add(new DCM("analytics_test", "test.values.cycle", "0:0:0:0:0:200"));
+            dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
+            dcms.add(new DCM("client_name", "test-values-random", "0:0:0:0:0:10"));
+            dcms.add(new DCM("client_version", "test-values-random", "0:0:0:0:0:5"));
             dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
-            dcms.add(new DCM("analytics_test", "test.values.cycle", "0:0:0:0:0:200"));
+            dcms.add(new DCM("analytics_test", "test-values-cycle", "0:0:0:0:0:200"));
             dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
 
             for (int j=0;j<Math.random()*dcms.size();j++){

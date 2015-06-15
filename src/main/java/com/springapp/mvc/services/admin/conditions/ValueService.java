@@ -1,15 +1,13 @@
 package com.springapp.mvc.services.admin.conditions;
 
+import db.Updater;
 import db.dao.DAOFactory;
-import db.dao.EntityDAO;
 import entities.available.condition.Value;
-import entities.available.dcm.Key;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,9 +30,8 @@ public class ValueService {
     public void update(@PathVariable String value) {
     }
     @RequestMapping(value = "/updateAll/{values}", method = RequestMethod.POST)
-    public void updateAll(@PathVariable Value[] values) {
-        EntityDAO entityDAO=DAOFactory.getValuesDAO();
-        Arrays.stream(values).forEach(entityDAO::save);
+    public void updateAll(@PathVariable String values) {
+        Updater.updateValues(values);
     }
     @RequestMapping(value = "/showAll", method = RequestMethod.GET)
     public List<Value> update() {

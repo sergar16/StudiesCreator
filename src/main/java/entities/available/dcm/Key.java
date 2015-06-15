@@ -11,9 +11,9 @@ import javax.persistence.*;
 @Table(name = "AVAILABLE_KEYS")
 public class Key implements JPAEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    Long id;
+    long id;
 
     @Column(name = "VALUE")
     String keyValue;
@@ -21,15 +21,22 @@ public class Key implements JPAEntity {
     public Key() {
     }
 
+    public Key(long id, String keyValue) {
+        this.id = id;
+        this.keyValue = keyValue;
+    }
+
+
+
     public Key(String key) {
         this.keyValue = key;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -41,7 +48,6 @@ public class Key implements JPAEntity {
         this.keyValue = key;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,14 +55,14 @@ public class Key implements JPAEntity {
 
         Key key = (Key) o;
 
-        if (id != null ? !id.equals(key.id) : key.id != null) return false;
+        if (id != key.id) return false;
         return !(keyValue != null ? !keyValue.equals(key.keyValue) : key.keyValue != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (keyValue != null ? keyValue.hashCode() : 0);
         return result;
     }

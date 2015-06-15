@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Logitech on 11.06.15.
@@ -25,14 +24,14 @@ public class UserController {
         EntityDAO entityDAO= DAOFactory.getStudyDAO();
         model.addAttribute("studies", entityDAO.findAll());
 
-        return "studieslist";
+        return "studiesList";
     }
 
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
-    public String edit(@PathVariable Long id, ModelMap model) {
+    public String edit(@PathVariable long id, ModelMap model) {
 
         EntityDAO entityDAO= DAOFactory.getStudyDAO();
-        model.addAttribute("study", entityDAO.findAll().get(id.intValue()));
+        model.addAttribute("study", entityDAO.findById(id));
         entityDAO= DAOFactory.getKeyDAO();
         model.addAttribute("enabledKeys",entityDAO.findAll());
         entityDAO= DAOFactory.getSourceDAO();
@@ -44,6 +43,6 @@ public class UserController {
         entityDAO=DAOFactory.getValuesDAO();
 
         model.addAttribute("values",entityDAO.findAll());
-        return "userstudyeditor";
+        return "userStudyEditor";
     }
 }

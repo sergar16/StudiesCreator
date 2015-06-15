@@ -11,24 +11,29 @@ import javax.persistence.*;
 @Table(name = "AVAILABLE_VALUES")
 public class Value  implements JPAEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    Long id;
-    @Column(name = "VALUE")
+    long id;
+    @Column(name = "VALUE",unique = true)
     String value;
 
     public Value() {
+    }
+
+    public Value(long id, String value) {
+        this.id = id;
+        this.value = value;
     }
 
     public Value(String value) {
         this.value = value;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

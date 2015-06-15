@@ -14,9 +14,6 @@
         <intercept-url pattern="/admin/study/edit**" access="ROLE_ADMIN" />
         <intercept-url pattern="/user**" access="ROLE_ADMIN"/>
 
-        <intercept-url pattern="/keyOperations/showAll**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/keyOperations/delete**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/keyOperations/add**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/resources**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 
 
