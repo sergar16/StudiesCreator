@@ -1,58 +1,11 @@
-
-
-var host="http://localhost:8082";
-//http://46.137.108.187
+var host = "http://46.137.108.187";
+//http://localhost:8082
 (function ($) {
 
 
-    $(function updateAll($) {
+    var updateAll = function(){
 
-        $('#dataStudiesTable').on('click', 'tr td:last-child .close', function (e) {
-            console.log('ID', $(this).data('id'));
-            $(this).closest('tr').remove();
-          try{
-            $.ajax({
-                url: host+'/service/study/delete/'+$(this).data('id'),
-                type: 'POST',
-                data: {
-                },
-                success: function () {
-                }
-            });
-          }catch (e){
-          //    location.reload();
-          }
-        });
-
-
-
-
-    });
-
-    $(function ($) {
-
-        $('#dataStudiesTable').on('click', 'tr td  .add', function (e) {
-        //  var name= this.closest('text').value;
-
-                $.ajax({
-                    url: host+'/service/study/createNew',
-                    type: 'POST',
-                    data: {
-                    },
-                    success: function () {
-                    }
-                });
-          {
-             // location.reload();
-          }
-        });
-
-
-
-
-    });
-
-    $(function ($) {
+        console.log('Update All');
         var valueList=[];
         $('#saveStudies').click(function () {
 
@@ -65,24 +18,66 @@ var host="http://localhost:8082";
                 valueList.push(data);
             });
             console.log(valueList);
+            try{
+                $.ajax({
+                    url: host + '/service/study/updateAll/' + JSON.stringify(valueList),
+                    type: 'POST',
+                    data: {
+
+                    },
+                    success: function () {
+                        location.reload();
+                    }
+                });}catch (e){}
+
+        });
+
+    };
+
+    $(function ($) {
+
+        $('#dataStudiesTable').on('click', 'tr td:last-child .close', function (e) {
+            console.log('ID', $(this).data('id'));
+            if ($('#dataStudiesTable tbody tr').length > 2) {
+            $(this).closest('tr').remove();
           try{
             $.ajax({
-                url: host + '/service/study/updateAll/' + JSON.stringify(valueList),
+                url: host+'/service/study/delete/'+$(this).closest('tr').attr('id'),
                 type: 'POST',
                 data: {
-
                 },
                 success: function () {
                 }
-            });}catch (e){}
-      location.reload();
+            });
+          }catch (e){
+          //    location.reload();
+          }}
         });
 
 
-    })
 
 
+    });
 
+    $(function ($) {
+        $('#dataStudiesTable').on('click', 'tr td  .add', function (e) {
+               console.log($(this).closest('tr').next().attr('id'));
+                $.ajax({
+                    url: host+'/service/study/createNew/'+$(this).closest('table').find('tr').last().attr('id'),
+                    type: 'POST',
+                    data: {
+                    },
+                    success: function () {
+                       updateAll();
+                    }
+                });
+          {
+             // location.reload();
+          }
+        });
+    });
+
+    updateAll();
 
 
 })(jQuery);

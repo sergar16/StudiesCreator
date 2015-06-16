@@ -31,10 +31,10 @@ public class Mock {
         conditions.add(new Condition("device_type", "mouse"));
 
         Set<DCM> dcms = new HashSet<>();
-        dcms.add(new DCM("client_name", "test.values.random", "0:0:0:0:0:10"));
-        dcms.add(new DCM("client_version", "test.values.random", "0:0:0:0:0:5"));
+        dcms.add(new DCM("client_name", "test-values-random", "0:0:0:0:0:10"));
+        dcms.add(new DCM("client_version", "test-values-random", "0:0:0:0:0:5"));
         dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
-        dcms.add(new DCM("analytics_test", "test.values.cycle", "0:0:0:0:0:200"));
+        dcms.add(new DCM("analytics_test", "test-values-cycle", "0:0:0:0:0:200"));
         dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
         studyMock.setDcm(dcms);
         studyMock.setConditions(conditions);
@@ -50,6 +50,10 @@ public class Mock {
         studiesNames.add("Gamepads");
         studiesNames.add("Europe Mouses");
         studiesNames.add("USA Keyboards and Mouses");
+        studiesNames.add("Europe Keyboards for Ipad");
+        studiesNames.add("Speakers");
+        studiesNames.add("Asia Mouses");
+        studiesNames.add("Wireless Devices");
     }
 
     public static ArrayList<Key> keys = new ArrayList<>();
@@ -157,6 +161,8 @@ public class Mock {
             Set<Condition> conditions = new HashSet<>();
             conditions.add(new Condition("os_type", "windows"));
             conditions.add(new Condition("device_type", "mouse"));
+            conditions.add(new Condition("device_type", "mouse"));
+            conditions.add(new Condition("device_type", "mouse"));
             conditions.add(new Condition("region", "USA"));
             conditions.add(new Condition("region", "Europe"));
 
@@ -171,6 +177,7 @@ public class Mock {
             dcms.add(new DCM("core_test", "core_test2", "0:0:0:0:0:100"));
             dcms.add(new DCM("analytics_test", "test-values-cycle", "0:0:0:0:0:200"));
             dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
+
 
             for (int j=0;j<Math.random()*dcms.size();j++){
                 if (((int) Math.random() * 100) % 2 == 0) {

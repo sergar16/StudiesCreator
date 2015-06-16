@@ -35,8 +35,10 @@
         <authentication-provider>
 
             <user-service>
-                <user name="ksolodkyy" password="Logitech1234" authorities="ROLE_ADMIN" />
+                <user name="sergar16" password="777" authorities="ROLE_ADMIN" />
                 <user name="test" password="111" authorities="ROLE_ADMIN" />
+                <user name="javaexpert" password="777" authorities="ROLE_ADMIN" />
+                <user name="root" password="root" authorities="ROLE_ADMIN" />
 
             </user-service>
            <!--

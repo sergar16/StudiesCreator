@@ -28,7 +28,9 @@ public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
 
 
     public List<T> findAll() {
+        session.beginTransaction();
         final Criteria crit = session.createCriteria(type);
+        session.getTransaction().commit();
         return crit.list();
     }
 
@@ -51,7 +53,9 @@ public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
         session.beginTransaction();
         session.saveOrUpdate(t);
         session.getTransaction().commit();
-    }catch (Exception ex){}
+    }catch (Exception ex){
+        session.getTransaction().commit();
+    }
     }
 
     public void update(final T t) {

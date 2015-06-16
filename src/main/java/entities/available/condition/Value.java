@@ -14,7 +14,7 @@ public class Value  implements JPAEntity{
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     long id;
-    @Column(name = "VALUE",unique = true)
+    @Column(name = "VALUE")
     String value;
 
     public Value() {

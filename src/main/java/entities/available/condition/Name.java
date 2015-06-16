@@ -16,7 +16,6 @@ public class Name implements JPAEntity {
     @Id
    // @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
-    @Column(unique = true)
     String name;
 
     public Name() {

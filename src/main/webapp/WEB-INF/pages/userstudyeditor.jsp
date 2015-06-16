@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <head>
     <title>Study Editor</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
-
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <p id="id" hidden>${study.id}</p>
+<h4>${study.name}</h4>
+
 <table id="Conditions" align="left" border="1" style="margin-right: 30px">
     <caption><h1>Conditions</h1></caption>
     <th>name</th>
@@ -40,7 +40,7 @@
                 </button>
             </td>
             <td>
-                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close destroy" aria-label="Close" style="float: none" ><span
                         aria-hidden="true">&times;</span>
                 </button>
             </td>
@@ -62,7 +62,6 @@
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
         </button>
     </th>
-    <h1>${study.name}<h1>
         <c:forEach items="${study.dcm}" var="cell">
 
         <tr>
@@ -94,7 +93,7 @@
                 </button>
             </td>
             <td>
-                <button data-id="${cell.id}" id="${cell.id}" type="button" class="close" aria-label="Close" style="float: none" ><span
+                <button data-id="${cell.id}" id="${cell.id}" type="button" class="destroy close" aria-label="Close" style="float: none" ><span
                         aria-hidden="true">&times;</span>
                 </button>
             </td>
@@ -103,9 +102,10 @@
         </tr>
     </c:forEach>
 </table>
-</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/studyWebService.js" />"></script>
+</body>
+
 </html>

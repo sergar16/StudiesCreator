@@ -1,13 +1,12 @@
-
-
-var host="http://localhost:8082";
-//http://46.137.108.187
+var host = "http://46.137.108.187";
+//http://localhost:8082
 (function ($) {
 
     $(function ($) {
 
         $('#dataKeyTable').on('click', 'tr td:last-child .close', function (e) {
             console.log('ID', $(this).data('id'));
+            if ($('#dataKeyTable tbody tr').length > 2) {
             $(this).closest('tr').remove();
             $.ajax({
                 url: host+'/service/key/delete/'+$(this).data('id'),
@@ -17,7 +16,7 @@ var host="http://localhost:8082";
                 },
                 success: function () {
                 }
-            });
+            });}
         });
 
 
@@ -26,6 +25,7 @@ var host="http://localhost:8082";
 
         $('#dataSourceTable').on('click', 'tr td:last-child .close', function (e) {
             console.log('ID', $(this).data('id'));
+            if ($('#dataSourceTable tbody tr').length > 2) {
             $(this).closest('tr').remove();
             $.ajax({
                 url: host+'/service/source/delete/'+$(this).data('id'),
@@ -35,7 +35,7 @@ var host="http://localhost:8082";
                 },
                 success: function () {
                 }
-            });
+            });}
         });
 
 
@@ -44,6 +44,7 @@ var host="http://localhost:8082";
 
         $('#dataSamplingPeriodsTable').on('click', 'tr td:last-child .close', function (e) {
             console.log('ID', $(this).data('id'));
+            if ($('#dataSamplingPeriodsTable tbody tr').length > 2) {
             $(this).closest('tr').remove();
             $.ajax({
                 url: host+'/service/samplingPeriod/delete/'+$(this).data('id'),
@@ -53,7 +54,7 @@ var host="http://localhost:8082";
                 },
                 success: function () {
                 }
-            });
+            });}
         });
 
 

@@ -6,10 +6,11 @@ import db.dao.EntityDAO;
 import entities.Condition;
 import entities.DCM;
 import entities.Study;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,11 +28,11 @@ public class StudyService {
         DAOFactory.getStudyDAO().save(new Study());
     }
 
-    @RequestMapping(value = "/createNew", method = RequestMethod.POST)
-    public void add() {
+    @RequestMapping(value = "/createNew/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> add(@PathVariable long id) {
         EntityDAO entityDAO=DAOFactory.getStudyDAO();
 
-        Study study = new Study(entityDAO.findAll().size()+1, "enter new item");
+        Study study = new Study(id, "enter new item");
         System.out.println(study);
         Set<DCM> dcms = new HashSet<>();
         dcms.add(new DCM("new", "new", "new"));
@@ -40,6 +41,8 @@ public class StudyService {
         study.setConditions(conditions);
         study.setDcm(dcms);
         entityDAO.saveOrUpdate(study);
+        return ResponseEntity.ok(study);
+
 
     }
 
@@ -53,8 +56,10 @@ public class StudyService {
     }
 
     @RequestMapping(value = "/updateAll/{values}", method = RequestMethod.POST)
-    public void updateAll(@PathVariable String values) {
+    public ResponseEntity<?> updateAll(@PathVariable String values) {
         Updater.updateStudies(values);
+        return ResponseEntity.ok(values);
+
     }
 
     @RequestMapping(value = "/update/{id}/{values}", method = RequestMethod.POST)

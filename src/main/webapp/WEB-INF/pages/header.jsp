@@ -20,6 +20,9 @@
 
 
                     <ul class="nav navbar-nav">
+                       <li><a class="navbar-header" href="<c:url value='/user/studies'/>" style="display: block float: left;">
+                            Studies
+                        </a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">Admin Operations<span class="caret"></span></a>

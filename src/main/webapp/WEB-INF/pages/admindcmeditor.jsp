@@ -18,7 +18,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Admin DCM Options</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
 
@@ -131,6 +130,7 @@
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/dcmWebService.js" />"></script>
 </html>
