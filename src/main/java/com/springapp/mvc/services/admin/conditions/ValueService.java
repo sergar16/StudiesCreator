@@ -5,6 +5,7 @@ import db.dao.DAOFactory;
 import db.dao.EntityDAO;
 import entities.available.condition.Name;
 import entities.available.condition.Value;
+import entities.available.dcm.Key;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import util.JSONProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Logitech on 04.06.15.
@@ -45,17 +47,25 @@ public class ValueService {
 
     @RequestMapping(value = "/save/{nameid}/{values}", method = RequestMethod.POST)
     public ResponseEntity saveAllByConditionName(@PathVariable long nameid, @PathVariable String values) {
-        EntityDAO<Name> entityDAO=DAOFactory.getNamesDAO();
-        Name name=entityDAO.findById(nameid);
+        EntityDAO<Name> entityDAO = DAOFactory.getNamesDAO();
+        Name name = entityDAO.findById(nameid);
         name.setValuesList(JSONProcessor.getValuestListFromJSON(values));
         return ResponseEntity.ok(values);
     }
 
     @RequestMapping(value = "/get/{nameid}", method = RequestMethod.GET)
     public List<Value> getAllByConditionName(@PathVariable long nameid) {
-        EntityDAO<Name> entityDAO=DAOFactory.getNamesDAO();
-        Name name=entityDAO.findById(nameid);
+        EntityDAO<Name> entityDAO = DAOFactory.getNamesDAO();
+        Name name = entityDAO.findById(nameid);
         return name.getValuesList();
+    }
+
+    @RequestMapping(value = "/getByName/{name}", method = RequestMethod.GET)
+    public List<Value> getAllByConditionName(@PathVariable String name) {
+        EntityDAO<Name> entityDAO = DAOFactory.getNamesDAO();
+        Optional<Name> optional = entityDAO.findAll().stream().filter(value -> value.getName().equals(name)).findAny();
+
+        return optional.get().getValuesList();
     }
 
 }
