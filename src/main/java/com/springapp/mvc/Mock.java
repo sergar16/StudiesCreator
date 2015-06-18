@@ -24,7 +24,7 @@ public class Mock {
     public static Study studyMock = new Study();
 
     static {
-        studyMock.setId(1l);
+        studyMock.setId(1);
         studyMock.setName("Gaming Mouse");
         Set<Condition> conditions = new HashSet<>();
         conditions.add(new Condition("os_type", "windows"));
@@ -40,8 +40,8 @@ public class Mock {
         studyMock.setConditions(conditions);
 
 
-
     }
+
     public static ArrayList<String> studiesNames = new ArrayList<>();
 
     static {
@@ -65,28 +65,54 @@ public class Mock {
     }
 
     public static ArrayList<Name> names = new ArrayList<>();
+
     static {
-        names.add(new Name(1l,"client_name"));
-        names.add(new Name(2l,"os_type"));
-        names.add(new Name(3l,"os_version"));
-        names.add(new Name(4l,"device_id"));
-        names.add(new Name(5l,"device_name"));
-        names.add(new Name(6l,"region_name"));
+        Name name1 = new Name(1l, "client_name");
+
+        ArrayList<Value> valList = new ArrayList<>();
+        valList.add(new Value( "mouse"));
+        valList.add(new Value( "gamepad"));
+        valList.add(new Value( "webcam"));
+        valList.add(new Value( "keyboard"));
+        valList.add(new Value( "speakers"));
+        name1.setValuesList(valList);
+        names.add(name1);
+        valList = new ArrayList<>();
+        Name name2 = new Name(2l, "os_type");
+
+        valList.add(new Value( "ubuntu  "));
+        valList.add(new Value( "windows"));
+        valList.add(new Value( "linux"));
+        valList.add(new Value( "osx"));
+        name2.setValuesList(valList);
+        names.add(name2);
+
+        valList = new ArrayList<>();
+        Name name3 = new Name(3, "region-code");
+
+        valList.add(new Value( "us-west-1"));
+        valList.add(new Value( "us-west-2"));
+        valList.add(new Value( "eu-west-1"));
+        valList.add(new Value( "eu-west-2"));
+        valList.add(new Value( "ubuntu"));
+        name3.setValuesList(valList);
+
+        names.add(name3);
+        valList = new ArrayList<>();
+        Name name4 = new Name(4, "region-name");
+
+        valList.add(new Value( "Asia"));
+        valList.add(new Value( "Africa"));
+        valList.add(new Value( "Europe"));
+        valList.add(new Value( "USA"));
+        name4.setValuesList(valList);
+
+        names.add(name4);
+
+
     }
 
 
-    public static ArrayList<Value> values=new ArrayList<>();
-    static {
-        values.add(new Value(1l,"windows"));
-        values.add(new Value(2,"Linux"));
-        values.add(new Value(3,"mac"));
-        values.add(new Value(4,"mouse"));
-        values.add(new Value(5,"keyboard"));
-        values.add(new Value(6,"webcam"));
-        values.add(new Value(7,"gameing keyboard"));
-        values.add(new Value(8,"wireless dev"));
-        values.add(new Value(9,"eu-west-1"));
-    }
 
     public static void init() {
 /*
@@ -107,56 +133,51 @@ public class Mock {
         entityDAO.save(user4);
         entityDAO.save(user5);*/
 
-      EntityDAO  entityDAO=DAOFactory.getStudyDAO();
+        EntityDAO entityDAO = DAOFactory.getStudyDAO();
         generateStudies().stream().forEach(entityDAO::save);
 
-        entityDAO= DAOFactory.getKeyDAO();
+        entityDAO = DAOFactory.getKeyDAO();
 
 
-            entityDAO.save(new Key(1, "analytics_test"));
-            entityDAO.save(new Key(2, "core_test"));
-            entityDAO.save(new Key(3, "analytics_test1"));
-            entityDAO.save(new Key(4, "core_test2"));
-        entityDAO.save(new Key(5,"client_name"));
-        entityDAO.save(new Key(6,"core_test"));
-        entityDAO.save(new Key(7,"client_version"));
+        entityDAO.save(new Key(1, "analytics_test"));
+        entityDAO.save(new Key(2, "core_test"));
+        entityDAO.save(new Key(3, "analytics_test1"));
+        entityDAO.save(new Key(4, "core_test2"));
+        entityDAO.save(new Key(5, "client_name"));
+        entityDAO.save(new Key(6, "core_test"));
+        entityDAO.save(new Key(7, "client_version"));
 
 
-
-        entityDAO= DAOFactory.getSourceDAO();
+        entityDAO = DAOFactory.getSourceDAO();
 //            entityDAO.save(new Source(1,"test.values.random"));
 //        entityDAO.save(new Source(2,"test.values.random"));
 //        entityDAO.save(new Source(3,"test.mock"));
 //        entityDAO.save(new Source(4,"test.values.cycle"));
 //        entityDAO.save(new Source(5,"test.string.random"));
- entityDAO.save(new Source(1,"test-values-random"));
-        entityDAO.save(new Source(2,"test-values-random"));
-        entityDAO.save(new Source(3,"test-mock"));
-        entityDAO.save(new Source(4,"test-values-cycle"));
-        entityDAO.save(new Source(5,"test-string-random"));
+        entityDAO.save(new Source(1, "test-values-random"));
+        entityDAO.save(new Source(2, "test-values-random"));
+        entityDAO.save(new Source(3, "test-mock"));
+        entityDAO.save(new Source(4, "test-values-cycle"));
+        entityDAO.save(new Source(5, "test-string-random"));
 
 
-        entityDAO= DAOFactory.getSamplingPeriodDAO();
-        entityDAO.save(new SamplingPeriod(1,"0:0:0:0:0:5"));
-        entityDAO.save(new SamplingPeriod(2,"0:0:0:0:0:10"));
-        entityDAO.save(new SamplingPeriod(3,"0:0:0:0:0:100"));
-        entityDAO.save(new SamplingPeriod(4,"0:0:0:0:0:200"));
+        entityDAO = DAOFactory.getSamplingPeriodDAO();
+        entityDAO.save(new SamplingPeriod(1, "0:0:0:0:0:5"));
+        entityDAO.save(new SamplingPeriod(2, "0:0:0:0:0:10"));
+        entityDAO.save(new SamplingPeriod(3, "0:0:0:0:0:100"));
+        entityDAO.save(new SamplingPeriod(4, "0:0:0:0:0:200"));
 
-        entityDAO=DAOFactory.getNamesDAO();
+        entityDAO = DAOFactory.getNamesDAO();
         names.stream().forEach(entityDAO::save);
-        entityDAO=DAOFactory.getValuesDAO();
-        values.stream().forEach(entityDAO::save);
-
-
 
 
     }
 
-    public static ArrayList<Study> generateStudies(){
-        ArrayList<Study> studies=new ArrayList<>();
-        for (int i=1;i<studiesNames.size();i++){
-            Study study=new Study();
-          study.setName(studiesNames.get(i));
+    public static ArrayList<Study> generateStudies() {
+        ArrayList<Study> studies = new ArrayList<>();
+        for (int i = 1; i < studiesNames.size(); i++) {
+            Study study = new Study();
+            study.setName(studiesNames.get(i));
             study.setId(i);
             Set<Condition> conditions = new HashSet<>();
             conditions.add(new Condition("os_type", "windows"));
@@ -179,17 +200,16 @@ public class Mock {
             dcms.add(new DCM("analytics_test2", "analytics_test", "0:0:0:0:0:5"));
 
 
-            for (int j=0;j<Math.random()*dcms.size();j++){
+            for (int j = 0; j < Math.random() * dcms.size(); j++) {
                 if (((int) Math.random() * 100) % 2 == 0) {
-                   dcms.remove(dcms.iterator().next());
+                    dcms.remove(dcms.iterator().next());
                 }
             }
-            for (int j=0;j<Math.random()*conditions.size();j++){
+            for (int j = 0; j < Math.random() * conditions.size(); j++) {
                 if (((int) Math.random() * 100) % 2 == 0) {
                     dcms.remove(conditions.iterator().next());
                 }
             }
-
 
 
             study.setDcm(dcms);

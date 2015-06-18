@@ -2,10 +2,14 @@ package com.springapp.mvc;
 
 import db.dao.DAOFactory;
 import db.dao.EntityDAO;
+import entities.available.condition.Name;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,9 +34,9 @@ public class AdminController {
     @RequestMapping(value = "/edit/conditions", method = RequestMethod.GET)
     public String editConditions(ModelMap model) {
         EntityDAO entityDAO= DAOFactory.getNamesDAO();
-        model.addAttribute("names", entityDAO.findAll());
-        entityDAO= DAOFactory.getValuesDAO();
-        model.addAttribute("values", entityDAO.findAll());
+       List<Name> conditions= entityDAO.findAll();
+        model.addAttribute("names",conditions );
+        model.addAttribute("values",conditions.get(0).getValuesList() );
         return "adminConditionEditor";
     }
 

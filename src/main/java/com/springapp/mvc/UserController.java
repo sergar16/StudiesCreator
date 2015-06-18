@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
+
 /**
  * Created by Logitech on 11.06.15.
  */
@@ -41,9 +43,9 @@ public class UserController {
         model.addAttribute("enabledSamplingPeriods",entityDAO.findAll());
         entityDAO= DAOFactory.getNamesDAO();
         model.addAttribute("names",entityDAO.findAll());
-        entityDAO=DAOFactory.getValuesDAO();
+        List list=DAOFactory.getNamesDAO().findAll().get(0).getValuesList();
 
-        model.addAttribute("values",entityDAO.findAll());
+        model.addAttribute("values",list);
         return "userStudyEditor";
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)

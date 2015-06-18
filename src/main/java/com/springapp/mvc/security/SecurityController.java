@@ -11,15 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SecurityController {
 
 	@RequestMapping(value = {  "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "public");
-		model.addObject("message", " public page with some information and sign in button!");
-		model.setViewName("public");
-		return model;
-
-
+	public void welcomePage() {
 	}
 
 	/*@RequestMapping(value = "/admin**", method = RequestMethod.GET)

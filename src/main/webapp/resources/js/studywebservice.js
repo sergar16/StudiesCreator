@@ -1,5 +1,5 @@
-var host = "http://46.137.108.187";
-//http://localhost:8082
+var host = "http://localhost:8082";
+//http://46.137.108.187
 (function ($) {
 
     $(function ($) {
@@ -29,17 +29,17 @@ var host = "http://46.137.108.187";
     });
 
     $(function ($) {
-        var studyID;
+
         var conditions=[];
         $('#saveStudy').click(function () {
 
             $('#Conditions tbody tr:not(:first-child)').each(function () {
-                 studyID=this.id;
                 var value = this.cells[1].firstChild.value;
                 var name = this.cells[0].children[0].value;
                 var data = {name:name,value:value};
                 console.log(data);
                 conditions.push(data);
+              console.log(  JSON.stringify(data));
             });
             var dcm=[];
 
@@ -57,6 +57,9 @@ var host = "http://46.137.108.187";
                 dcm.push(data);
             });
             console.log(conditions, dcm);
+           var studyID=$("#study").data('id');
+            console.log(studyID);
+
             $.ajax({
                 url: host + '/service/study/update/'+studyID+'/' + JSON.stringify({conditions:conditions,dcm:dcm}),
                 type: 'POST',

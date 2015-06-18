@@ -1,5 +1,5 @@
-var host = "http://46.137.108.187";
-//http://localhost:8082
+var host = "http://localhost:8082";
+//http://46.137.108.187
 (function ($) {
 
 

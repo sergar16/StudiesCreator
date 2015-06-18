@@ -29,7 +29,7 @@ public class Updater {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
                 final long id = Long.parseLong(object.getString("id"));
-                final String namevalue = object.getString("name");
+                final String namevalue = object.getString("value");
                 Name name = null;
                 try {
                     name = (Name) entityDAO.findById(id);
@@ -51,36 +51,36 @@ public class Updater {
 
 
     }
-
-    public static void updateValues(String values) {
-        EntityDAO entityDAO = DAOFactory.getValuesDAO();
-        try {
-            System.out.println(values);
-            JSONArray array = new JSONArray(values);
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject object = array.getJSONObject(i);
-                final long id = Long.parseLong(object.getString("id"));
-                final String namevalue = object.getString("value");
-                Value value = null;
-                try {
-                    value = (Value) entityDAO.findById(id);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (value == null) {
-                    value = new Value(id, namevalue);
-                    System.out.println(value);
-                } else {
-                    value.setValue(namevalue);
-                    System.out.println(value);
-                }
-                entityDAO.saveOrUpdate(value);
-            }
-        } catch (JSONException jse) {
-            jse.printStackTrace();
-        }
-
-    }
+//
+//    public static void updateValues(String values) {
+//        EntityDAO entityDAO = DAOFactory.getValuesDAO();
+//        try {
+//            System.out.println(values);
+//            JSONArray array = new JSONArray(values);
+//            for (int i = 0; i < array.length(); i++) {
+//                JSONObject object = array.getJSONObject(i);
+//                final long id = Long.parseLong(object.getString("id"));
+//                final String namevalue = object.getString("value");
+//                Value value = null;
+//                try {
+//                    value = (Value) entityDAO.findById(id);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                if (value == null) {
+//                    value = new Value(id, namevalue);
+//                    System.out.println(value);
+//                } else {
+//                    value.setValue(namevalue);
+//                    System.out.println(value);
+//                }
+//                entityDAO.saveOrUpdate(value);
+//            }
+//        } catch (JSONException jse) {
+//            jse.printStackTrace();
+//        }
+//
+//    }
 
     public static void updateKeys(String values) {
         EntityDAO entityDAO = DAOFactory.getKeyDAO();

@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Admin DCM Options</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap.min.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
 
@@ -41,8 +41,10 @@
                     <tr id="${cell.id}">
                         <td align="left"><input id="key${cell.id}" type="text" value="${cell.keyValue}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataKeyTable')" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
+                                    aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none"
+                                    onclick="addRow('dataKeyTable')"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -75,8 +77,10 @@
                     <tr id="${cell.id}">
                         <td align="left"><input type="text" value="${cell.source}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataSourceTable')" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
+                                    aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none"
+                                    onclick="addRow('dataSourceTable')"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -110,8 +114,10 @@
                     <tr id="${cell.id}">
                         <td align="left"><input type="text" value="${cell.samplingPeriod}"></td>
                         <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add" aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataSamplingPeriodsTable')" ><span
+                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
+                                    aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none"
+                                    onclick="addRow('dataSamplingPeriodsTable')"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -129,8 +135,8 @@
     </div>
 </div>
 </body>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-2.1.4.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/dcmWebService.js" />"></script>
 </html>

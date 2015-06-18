@@ -6,6 +6,8 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Logitech on 08.06.15.
@@ -17,7 +19,8 @@ public class Name implements JPAEntity {
    // @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     String name;
-
+    @ElementCollection
+    List<Value> valuesIdList;
     public Name() {
     }
 
@@ -35,8 +38,6 @@ public class Name implements JPAEntity {
         this.name = name;
     }
 
-
-
     public String getName() {
         return name;
     }
@@ -50,6 +51,14 @@ public class Name implements JPAEntity {
         return id;
     }
 
+    public List<Value> getValuesList() {
+        return valuesIdList;
+    }
+
+    public void setValuesList(List<Value> valuesIdList) {
+        this.valuesIdList = valuesIdList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,7 +67,8 @@ public class Name implements JPAEntity {
         Name name1 = (Name) o;
 
         if (id != name1.id) return false;
-        return !(name != null ? !name.equals(name1.name) : name1.name != null);
+        if (name != null ? !name.equals(name1.name) : name1.name != null) return false;
+        return !(valuesIdList != null ? !valuesIdList.equals(name1.valuesIdList) : name1.valuesIdList != null);
 
     }
 
@@ -66,6 +76,7 @@ public class Name implements JPAEntity {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (valuesIdList != null ? valuesIdList.hashCode() : 0);
         return result;
     }
 
@@ -76,4 +87,6 @@ public class Name implements JPAEntity {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
 }

@@ -1,5 +1,5 @@
-var host = "http://46.137.108.187";
-//http://localhost:8082
+var host = "http://localhost:8082";
+//http://46.137.108.187
 (function ($) {
 
     $(function ($) {
@@ -153,23 +153,3 @@ var host = "http://46.137.108.187";
 
 })(jQuery);
 
-
-/*
- $('#postButton').on('click', function () {
- event.preventDefault();
-
- var cookie = JSON.parse($.cookie('helloween'));
- $.ajax({
- data: {},
- headers: {'X-CSRF-TOKEN': cookie.csrf},
- timeout: 1000,
- type: 'POST',
- url: ''
-
- }).done(function(data, textStatus, jqXHR) {
- console.info("POST succeeded!!!");
-
- }).fail(function(jqXHR, textStatus, errorThrown) {
- console.error('Problems when posting...');
- });
- });*/

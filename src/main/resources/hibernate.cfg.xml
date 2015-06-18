@@ -7,12 +7,12 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-         <property name="connection.url">jdbc:postgresql://studydb.cppkbsaxzz5s.eu-west-1.rds.amazonaws.com:5432/studydb</property>
-             <property name="connection.username">ksolodkyy</property>
-            <property name="connection.password">Logitech1234</property>
-        <!--   <property name="hibernate.connection.username">postgres</property>
-           <property name="hibernate.connection.password">root</property>
-           <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/postgres</property>-->
+        <!--     <property name="connection.url">jdbc:postgresql://studydb.cppkbsaxzz5s.eu-west-1.rds.amazonaws.com:5432/studydb</property>
+               <property name="connection.username">ksolodkyy</property>
+              <property name="connection.password">Logitech1234</property>-->
+           <property name="hibernate.connection.username">postgres</property>
+             <property name="hibernate.connection.password">root</property>
+             <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/postgres</property>
            <property name="connection_pool_size">10</property>
 
            <property name="hbm2ddl.auto">create</property>

@@ -8,11 +8,16 @@
         >
 
 
+    <beans:bean name="bcryptEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+
     <http auto-config="true">
         <intercept-url pattern="/admin/edit/dcm**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/edit/conditions**" access="ROLE_ADMIN" />
         <intercept-url pattern="/admin/study/edit**" access="ROLE_ADMIN" />
         <intercept-url pattern="/user**" access="ROLE_ADMIN"/>
+        <!--<intercept-url pattern="/service**" access="ROLE_ADMIN"/>-->
 
         <intercept-url pattern="/resources**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 
@@ -33,20 +38,18 @@
 
     <authentication-manager>
         <authentication-provider>
-
             <user-service>
-                <user name="sergar16" password="777" authorities="ROLE_ADMIN" />
-                <user name="test" password="111" authorities="ROLE_ADMIN" />
-                <user name="javaexpert" password="777" authorities="ROLE_ADMIN" />
-                <user name="root" password="root" authorities="ROLE_ADMIN" />
-
+                <user name="sergar16" password="$2a$10$aEgu07OxKKLAKw4fH9kLb.RoGbVkKdRFYW4ZWoMwMkc2qwa2OwwiG" authorities="ROLE_ADMIN" />
+                <user name="test" password="$2a$10$I2/4ptghsSpbINz3/AHTZe20fqaNxg.RuP5XHthgzxYwZ1.ALpX96" authorities="ROLE_ADMIN" />
+                <user name="javaexpert" password="$2a$10$aEgu07OxKKLAKw4fH9kLb.RoGbVkKdRFYW4ZWoMwMkc2qwa2OwwiG" authorities="ROLE_ADMIN" />
+                <user name="root" password="$2a$10$5og8EbGK5wxBjhCR2JwMLeLW6iSkvn/AJWPHImdUVnz.ctF8wzI86" authorities="ROLE_ADMIN" />
             </user-service>
-           <!--
-            <password-encoder hash="md5">
-                <salt-source system-wide="cewuiqwzie"/>
-            </password-encoder>-->
+
+            <password-encoder ref="bcryptEncoder"/>
         </authentication-provider>
 
     </authentication-manager>
+
+
 
 </beans:beans>

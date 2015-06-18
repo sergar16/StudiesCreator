@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
  @Autowired
  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
- auth.inMemoryAuthentication().withUser("mkyong").password("123456").roles("USER");
+ auth.inMemoryAuthentication().withUser("serhio").password("$2a$10$0fEG6T0ChgcMoIWbqjRvx.e50hqBLyg17HqVKQBRSgUmd7TdzR86i").roles("ADMIN");
  auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
  auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
  }

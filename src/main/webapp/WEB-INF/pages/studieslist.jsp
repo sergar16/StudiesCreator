@@ -16,7 +16,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Studies List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap.min.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/table.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/text-field.css" />"/>
 </head>
@@ -38,7 +38,8 @@
                 </th>
                 <c:forEach items="${studies}" var="cell">
                     <tr id="${cell.id}">
-                        <td align="left"><input id="key${cell.id}" class="inputtext" type="text" value="${cell.name}"></td>
+                        <td align="left"><input id="key${cell.id}" class="inputtext" type="text" value="${cell.name}">
+                        </td>
 
                         <td>
                             <form action=<c:url value="/user/edit/${cell.id}"/>>
@@ -47,8 +48,10 @@
                         </td>
 
                         <td>
-                            <button data-id="${cell.id}" id="${cell.id}" type="button" class="close add" aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none" onclick="addRow('dataStudiesTable')" ><span
+                            <button data-id="${cell.id}" id="${cell.id}" type="button" class="close add"
+                                    aria-label="Close"
+                                    style="-webkit-transform: rotateZ(45deg);float: none"
+                                    onclick="addRow('dataStudiesTable')"><span
                                     aria-hidden="true">&times;</span>
                             </button>
                         </td>
@@ -68,10 +71,8 @@
 </div>
 
 </body>
-<%--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-2.1.4.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/tableEditor.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/studiesWebService.js" />"></script>
 </html>

@@ -36,9 +36,7 @@ public class DAOFactory {
         return new StudyDAO<Name>(Name.class);
     }
 
-    public static EntityDAO<Value> getValuesDAO() {
-        return new StudyDAO<Value>(Value.class);
-    }
+
 
 
 }
