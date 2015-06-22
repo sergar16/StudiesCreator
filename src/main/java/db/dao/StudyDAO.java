@@ -15,8 +15,8 @@ import java.util.Optional;
 public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
 
 
-    private static Session session;
-    static { try {
+    private  Session session;
+     { try {
         session = Connector.getSessionFactory().openSession();
     } catch (Exception ex) {
         ex.printStackTrace();
@@ -90,5 +90,9 @@ public class StudyDAO<T extends JPAEntity>  extends EntityDAO<T> {
         return this.type;
     }
 
+    @Override
+    protected void finalize() throws Throwable {
+        session.close();
+    }
 }
 

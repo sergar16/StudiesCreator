@@ -27,24 +27,24 @@
     <div class="row text-center">
         <div class="col-md-6">
             <table id="dataNameTable" class="table" border="1">
-                <th><h3>Names</h3></th>
+                <th>
+                    <h3>Names
+                        <button  type="button" class="close add"
+                                aria-label="Close"
+                                style="-webkit-transform: rotateZ(45deg);float: none"
+                                onclick="addRow('dataNameTable')"><span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                    </h3>
+                </th>
                 <th></th>
                 <th align="center">
-                    <button id="savename" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
+
                 </th>
                 <c:forEach items="${names}" var="cell">
                     <tr id="${cell.id}">
                         <td align="left"><input type="text" class="inputtext" value="${cell.name}"></td>
-                        <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
-                                    aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none"
-                                    onclick="addRow('dataNameTable')"><span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
+
                         <td>
                             <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
                                     style="float: none"><span
@@ -62,24 +62,25 @@
         <div class="col-md-6">
             <table id="dataValueTable" class="table" border="1">
 
-                <th align="center"><h3>Values</h3></th>
+                <th align="center">
+                    <h3>Values
+                        <button type="button" class="close add"
+                                aria-label="Close"
+                                style="-webkit-transform: rotateZ(45deg);float: none"
+                                onclick="addRow('dataValueTable')"><span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                    </h3>
+                </th>
                 <th></th>
                 <th align="center">
-                    <button id="savevalue" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
+
                 </th>
                 <c:forEach items="${values}" var="cell">
 
                     <tr id="${cell.value}">
                         <td align="left"><input type="text" value="${cell.value}"></td>
-                        <td>
-                            <button data-id="${cell.value}" type="button" class="close add" aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none"
-                                    onclick="addRow('dataValueTable')"><span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
+
                         <td>
                             <button data-id="${cell.value}" type="button" class="close" aria-label="Close"
                                     style="float: none"><span

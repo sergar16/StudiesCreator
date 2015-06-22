@@ -7,7 +7,7 @@ var host = "http://localhost:8082";
 
         console.log('Update All');
         var valueList=[];
-        $('#saveStudies').click(function () {
+        $('#save').click(function () {
 
             $('#dataStudiesTable tbody tr:not(:first-child)').each(function () {
                 var id = this.id;

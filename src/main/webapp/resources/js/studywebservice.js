@@ -31,7 +31,7 @@ var host = "http://localhost:8082";
     $(function ($) {
 
         var conditions = [];
-        $('#saveStudy').click(function () {
+        $('#save').click(function () {
 
             $('#Conditions tbody tr:not(:first-child)').each(function () {
                 var value = this.cells[1].firstChild.value;

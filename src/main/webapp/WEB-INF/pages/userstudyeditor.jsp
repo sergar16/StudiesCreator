@@ -57,10 +57,7 @@
     <th>source</th>
     <th>sampling period</th>
     <th></th>
-    <th align="center">
-        <button id="saveStudy" type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-        </button>
+    <th align="center">`
     </th>
     <c:forEach items="${study.dcm}" var="cell">
 

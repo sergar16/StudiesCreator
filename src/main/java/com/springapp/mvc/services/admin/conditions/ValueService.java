@@ -67,5 +67,15 @@ public class ValueService {
 
         return optional.get().getValuesList();
     }
+    @RequestMapping(value = "/updateAll/{nameid}/{values}", method = RequestMethod.POST)
+    public ResponseEntity<?> updateAllValues(@PathVariable long nameid,@PathVariable String values) {
+       System.out.print("=================================================================");
+        EntityDAO<Name> entityDAO = DAOFactory.getNamesDAO();
+        Name name = entityDAO.findById(nameid);
+        name.setValuesList(JSONProcessor.getValuestListFromJSON(values));
+        entityDAO.saveOrUpdate(name);
+        return ResponseEntity.ok(values);
+    }
+
 
 }

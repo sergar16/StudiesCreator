@@ -94,7 +94,7 @@ public class Mock {
         valList.add(new Value( "us-west-2"));
         valList.add(new Value( "eu-west-1"));
         valList.add(new Value( "eu-west-2"));
-        valList.add(new Value( "ubuntu"));
+        valList.add(new Value( "au-east-3"));
         name3.setValuesList(valList);
 
         names.add(name3);

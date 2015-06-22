@@ -59,11 +59,11 @@ var host = "http://localhost:8082";
 
 
     });
-    
+
     ///Key
     $(function ($) {
         var keyList=[];
-        $('#saveKey').click(function () {
+        $('#save').click(function () {
 
             $('#dataKeyTable tbody tr:not(:first-child)').each(function () {
                 console.log(this.cells[this.cells.length-1]);
@@ -93,7 +93,7 @@ var host = "http://localhost:8082";
 
     $(function ($) {
         var valueList=[];
-        $('#saveSource').click(function () {
+        $('#save').click(function () {
 
             $('#dataSourceTable tbody tr:not(:first-child)').each(function () {
                 console.log(this.cells[this.cells.length-1]);
@@ -121,34 +121,33 @@ var host = "http://localhost:8082";
     })
     
     ///Sampling period
-    $(function ($) {
-        var valueList=[];
-        $('#saveSamplingPeriod').click(function () {
+    var valueList=[];
+    $('#save').click(function () {
 
-            $('#dataSamplingPeriodsTable tbody tr:not(:first-child)').each(function () {
-                console.log(this.cells[this.cells.length-1]);
-                console.log(this);
-                var id = this.id;
-                console.log(id);
-                var value = this.cells[0].firstChild.value;
-                console.log(value);
-                var data = {id:id,value:value};
-                valueList.push(data);
-            });
-            console.log(valueList);
-            $.ajax({
-                url: host + '/service/samplingPeriod/updateAll/' + JSON.stringify(valueList),
-                type: 'POST',
-                data: {
-
-                },
-                success: function () {
-                }
-            });
+        $('#dataSamplingPeriodsTable tbody tr:not(:first-child)').each(function () {
+            console.log(this.cells[this.cells.length-1]);
+            console.log(this);
+            var id = this.id;
+            console.log(id);
+            var value = this.cells[0].firstChild.value;
+            console.log(value);
+            var data = {id:id,value:value};
+            valueList.push(data);
         });
+        console.log(valueList);
+        $.ajax({
+            url: host + '/service/samplingPeriod/updateAll/' + JSON.stringify(valueList),
+            type: 'POST',
+            data: {
+
+            },
+            success: function () {
+            }
+        });
+    });
 
 
-    })
+цц
 
 
 })(jQuery);

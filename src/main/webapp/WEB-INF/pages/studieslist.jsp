@@ -32,9 +32,7 @@
                 <th>Studies</th>
                 <th></th>
                 <th align="center">
-                    <button id="saveStudies" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
+
                 </th>
                 <c:forEach items="${studies}" var="cell">
                     <tr id="${cell.id}">

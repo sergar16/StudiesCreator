@@ -30,24 +30,20 @@
     <div class="row text-center">
         <div class="col-md-4">
             <table id="dataKeyTable" class="table" border="1">
-                <th><h3>Available Keys</h3></th>
+                <th><h3>Available Keys  <button  type="button" class="close add"
+                                                aria-label="Close"
+                                                style="-webkit-transform: rotateZ(45deg);float: none"
+                                                onclick="addRow('dataKeyTable')"><span
+                        aria-hidden="true">&times;</span>
+                </button></h3></th>
                 <th></th>
                 <th align="center">
-                    <button id="saveKey" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
+
                 </th>
                 <c:forEach items="${keys}" var="cell">
                     <tr id="${cell.id}">
                         <td align="left"><input id="key${cell.id}" type="text" value="${cell.keyValue}"></td>
-                        <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
-                                    aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none"
-                                    onclick="addRow('dataKeyTable')"><span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
+
                         <td>
                             <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
                                     style="float: none"><span
@@ -66,24 +62,20 @@
         <!--  Sources-->
         <div class="col-md-4">
             <table id="dataSourceTable" class="table" border="1">
-                <th><h3>Available Sources</h3></th>
+                <th><h3>Available Sources <button  type="button" class="close add"
+                                                  aria-label="Close"
+                                                  style="-webkit-transform: rotateZ(45deg);float: none"
+                                                  onclick="addRow('dataSourceTable')"><span
+                        aria-hidden="true">&times;</span>
+                </button></h3></th>
                 <th></th>
                 <th align="center">
-                    <button id="saveSource" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
+
                 </th>
                 <c:forEach items="${sources}" var="cell">
                     <tr id="${cell.id}">
                         <td align="left"><input type="text" value="${cell.source}"></td>
-                        <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
-                                    aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none"
-                                    onclick="addRow('dataSourceTable')"><span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
+
                         <td>
                             <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
                                     style="float: none"><span
@@ -101,26 +93,21 @@
 
         <div class="col-md-4">
             <table id="dataSamplingPeriodsTable" class="table" border="1">
-                <th><h3>Available Sampling Periods</h3>
+                <th><h3>Available Sampling Periods   <button  type="button" class="close add"
+                                                             aria-label="Close"
+                                                             style="-webkit-transform: rotateZ(45deg);float: none"
+                                                             onclick="addRow('dataSamplingPeriodsTable')"><span
+                        aria-hidden="true">&times;</span>
+                </button></h3>
                 </th>
                 <th></th>
                 <th align="center">
-                    <button id="saveSamplingPeriod" type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    </button>
                 </th>
                 <c:forEach items="${samplingPeriods}" var="cell">
 
                     <tr id="${cell.id}">
                         <td align="left"><input type="text" value="${cell.samplingPeriod}"></td>
-                        <td>
-                            <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close add"
-                                    aria-label="Close"
-                                    style="-webkit-transform: rotateZ(45deg);float: none"
-                                    onclick="addRow('dataSamplingPeriodsTable')"><span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
+
                         <td>
                             <button data-id="${cell.id}" id="w${cell.id}" type="button" class="close" aria-label="Close"
                                     style="float: none"><span

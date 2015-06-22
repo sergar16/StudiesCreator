@@ -23,21 +23,12 @@ var host = "http://localhost:8082";
             console.log('ID', $(this).data('id'));
             if ($('#dataValueTable tbody tr').length > 2) {
                 $(this).closest('tr').remove();
-                $.ajax({
-                    url: host + '/service/value/delete/' + $(this).data('id'),
-                    type: 'POST',
-                    data: {
-                        'id': $(this).data('id')
-                    },
-                    success: function () {
-                    }
-                });
             }
         });
 
 
         var nameList = [];
-        $('#savename').click(function () {
+        $('#save').click(function () {
 
             $('#dataNameTable tbody tr:not(:first-child)').each(function () {
                 console.log(this.cells[this.cells.length - 1]);
@@ -57,44 +48,43 @@ var host = "http://localhost:8082";
                 success: function () {
                 }
             });
+            nameList = [];
+            $('#dataValueTable tbody tr:not(:first-child)').each(function () {
+                console.log(this.cells[this.cells.length - 1]);
+                console.log(this);
+                var id = this.id;
+                console.log(id);
+                var value = this.cells[0].firstChild.value;
+                console.log(value);
+                var data = {id: id, value: value};
+                nameList.push(data);
+            });
+            console.log(nameList);
+            $.ajax({
+                url: host + '/service/value/updateAll/'+selectedNameId+'/' + JSON.stringify(nameList),
+                type: 'POST',
+                data: {},
+                success: function () {
+                }
+            });
         });
 
 
-        //var valueList = [];
-        //$('#savevalue').click(function () {
-        //
-        //    $('#dataValueTable tbody tr:not(:first-child)').each(function () {
-        //        console.log(this.cells[this.cells.length - 1]);
-        //        console.log(this);
-        //        var id = this.id;
-        //        console.log(id);
-        //        var value = this.cells[0].firstChild.value;
-        //        console.log(value);
-        //        var data = {id: id, value: value};
-        //        valueList.push(data);
-        //    });
-        //    console.log(valueList);
-        //    $.ajax({
-        //        url: host + '/service/value/updateAll/' + JSON.stringify(valueList),
-        //        type: 'POST',
-        //        data: {},
-        //        success: function () {
-        //        }
-        //    });
-        //});
+        var valueList = [];
+        $('.add').click(function () {
 
 
+        });
+
+        var selectedNameId=1;
         var dataValueTable = $('#dataNameTable');
         dataValueTable.find('tbody tr:nth-child(2)').children('td,th').css('background-color', '');
-        ;
         dataValueTable.find('tbody tr:nth-child(2)').children('td,th').css('background-color', '#ddd');
-        ;
+
         var values = $.getJSON(host + '/service/value/get/1',
             function (data) {
-
             }
         ).done(function (data) {
-                var copyRow = $('#dataValueTable tbody tr:first-child');
                 var i = 0;
                 $('#dataValueTable tbody tr:not(:first-child)').each(function () {
                     $(this).value = data[i];
@@ -112,7 +102,8 @@ var host = "http://localhost:8082";
 
 
         dataValueTable.find('tbody tr').click(function () {
-
+            selectedNameId=this.id;
+            console.log(" id -", this.id );
             dataValueTable.find('tbody tr:not(:first-child)').each(function () {
                 $(this).children('td,th').css('background-color', '');
                 $(this).children('td,th').css('background-color', '#fafafa');
@@ -125,34 +116,19 @@ var host = "http://localhost:8082";
                 function (data) {
                 }
             ).done(function (data) {
-                    console.log('DATA', data[1].value);
-                    console.log('DATAALL', data);
-                    // var copyRow = $('#dataValueTable tbody tr:first-child');
-                    var i = 0;
-                    $('#dataValueTable tbody tr:not(:first-child)').each(function () {
-
-                        try { console.log('DATA', data[i].value);
-                            console.log('This',this);
-                            console.log('TD',$(this).find('td:first-child').find("input"));
-                            $(this).find('td:first-child').find("input").val(data[i].value);
-                            i++;
-                            if (i > data.length-1) {
-                                $(this).remove();
-                            }
-                        } catch (e) {
-                        }
-                    });
+                console.log('DATA', data);
+                var $table = $("#dataValueTable");
+                var $trList = $table.find('tr').filter(function (index, e) {
+                    return $(e).attr('id') !== undefined
                 });
+                    $trList.remove();
 
-
-            console.log("VALUES", values);
-
-
-        }).data;
-
-
-    })
-
+                for(var i = 0; i < data.length; i++){
+                    $table.append("<tr id='"+ data[i].value +"'><td><input type='text' value='"+ data[i].value+"'/></td></tr>");
+                }
+                });
+            });
+    });
 
 })(jQuery);
 
